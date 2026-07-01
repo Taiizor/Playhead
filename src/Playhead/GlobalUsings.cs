@@ -1,4 +1,3 @@
-global using Playhead;
 global using Playhead.Data;
 global using Playhead.Enums;
 global using Playhead.Interop;

@@ -1,4 +1,3 @@
-using Playhead.Interop;
 using System;
 using System.Runtime.InteropServices;
 using static Playhead.Interop.COMInterop;
@@ -234,16 +233,16 @@ namespace Playhead.Managers
         /// </summary>
         /// <returns>True if the session was successfully added, otherwise false.</returns>
         public bool AddSession(
-            NowPlayingSessionType type, 
-            IntPtr hwnd, 
-            uint pid, 
-            string appId, 
-            string sourceDeviceId, 
-            string renderDeviceId, 
-            string source, 
-            MediaPlaybackDataSource mediaControl, 
-            object connection, 
-            bool markAsCurrentSession, 
+            NowPlayingSessionType type,
+            IntPtr hwnd,
+            uint pid,
+            string appId,
+            string sourceDeviceId,
+            string renderDeviceId,
+            string source,
+            MediaPlaybackDataSource mediaControl,
+            object connection,
+            bool markAsCurrentSession,
             IntPtr processHandle)
         {
             if (numSelectInterface == 19041)
