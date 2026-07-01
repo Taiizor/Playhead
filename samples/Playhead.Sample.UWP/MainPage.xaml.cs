@@ -1,7 +1,12 @@
-using Playhead;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Playhead;
+using Playhead.Managers;
+using Playhead.Sessions;
+using Playhead.Data;
+using Playhead.Models;
+using Playhead.Enums;
 
 namespace Playhead.Sample.UWP
 {
@@ -22,12 +27,12 @@ namespace Playhead.Sample.UWP
         private void LoadSessions()
         {
             Sessions.Clear();
-            var activeSessions = _manager.GetSessions();
-            foreach (var session in activeSessions)
+            NowPlayingSession[] activeSessions = _manager.GetSessions();
+            foreach (NowPlayingSession session in activeSessions)
             {
-                var dataSource = session.ActivateMediaPlaybackDataSource();
-                var mediaInfo = dataSource?.GetMediaObjectInfo();
-                
+                MediaPlaybackDataSource dataSource = session.ActivateMediaPlaybackDataSource();
+                MediaObjectInfo? mediaInfo = dataSource?.GetMediaObjectInfo();
+
                 Sessions.Add(new SessionViewModel
                 {
                     Session = session,
@@ -47,7 +52,7 @@ namespace Playhead.Sample.UWP
             if (SessionsList.SelectedItem is SessionViewModel vm)
             {
                 _currentSession = vm.Session;
-                var mediaInfo = _currentSession.ActivateMediaPlaybackDataSource()?.GetMediaObjectInfo();
+                MediaObjectInfo? mediaInfo = _currentSession.ActivateMediaPlaybackDataSource()?.GetMediaObjectInfo();
                 TitleText.Text = mediaInfo?.Title ?? "Unknown Title";
                 ArtistText.Text = mediaInfo?.Artist ?? "Unknown Artist";
             }

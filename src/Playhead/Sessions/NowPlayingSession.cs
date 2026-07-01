@@ -1,7 +1,7 @@
 using System;
 using static Playhead.Interop.COMInterop;
 
-namespace Playhead
+namespace Playhead.Sessions
 {
     /// <summary>
     /// Represents a media playback session from another application providing info about that session and possibly allowing control.

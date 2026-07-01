@@ -1,4 +1,4 @@
-namespace Playhead
+namespace Playhead.Enums
 {
     /// <summary>
     /// Specifies the type of media playback data changed event.

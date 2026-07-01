@@ -1,6 +1,6 @@
 using System;
 
-namespace Playhead
+namespace Playhead.Enums
 {
     /// <summary>
     /// Specifies the capabilities of a media playback.

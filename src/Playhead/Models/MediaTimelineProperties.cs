@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Playhead
+namespace Playhead.Models
 {
     /// <summary>
     /// A structure that represents the timeline state of the session (Position, seek ranges etc.).

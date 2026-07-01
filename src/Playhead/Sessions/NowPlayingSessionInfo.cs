@@ -1,7 +1,7 @@
 using System;
 using static Playhead.Interop.COMInterop;
 
-namespace Playhead
+namespace Playhead.Sessions
 {
     /// <summary>
     /// Represents the information associated with a <see cref="NowPlayingSession"/>.

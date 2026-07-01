@@ -1,4 +1,4 @@
-namespace Playhead
+namespace Playhead.Enums
 {
     /// <summary>
     /// Specifies the state of a media playback.

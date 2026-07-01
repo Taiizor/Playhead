@@ -1,6 +1,12 @@
 using System;
 using System.Text;
 using System.Threading;
+using Playhead;
+using Playhead.Managers;
+using Playhead.Sessions;
+using Playhead.Data;
+using Playhead.Models;
+using Playhead.Enums;
 
 namespace Playhead.Sample.CLI
 {

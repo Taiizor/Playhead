@@ -1,4 +1,4 @@
-namespace Playhead
+namespace Playhead.Enums
 {
     /// <summary>
     /// Specifies the media playback commands that could be sent to a media session

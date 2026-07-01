@@ -1,4 +1,4 @@
-namespace Playhead
+namespace Playhead.Enums
 {
     /// <summary>
     /// Specifies the now playing session type.

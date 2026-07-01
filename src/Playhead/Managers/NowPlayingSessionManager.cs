@@ -3,7 +3,7 @@ using System;
 using System.Runtime.InteropServices;
 using static Playhead.Interop.COMInterop;
 
-namespace Playhead
+namespace Playhead.Managers
 {
     /// <summary>
     /// Provides access to playback sessions throughout the system that have integrated

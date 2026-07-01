@@ -1,11 +1,10 @@
-using Playhead.Interop;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using static Playhead.Interop.COMInterop;
 
-namespace Playhead
+namespace Playhead.Data
 {
     /// <summary>
     /// Represents the media playback data of a media session and provides the ability to control its playback.

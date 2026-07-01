@@ -1,4 +1,4 @@
-namespace Playhead
+namespace Playhead.Models
 {
     /// <summary>
     /// A structure that holds information about the content that the current session has.

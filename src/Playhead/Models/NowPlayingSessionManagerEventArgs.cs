@@ -1,6 +1,6 @@
 using System;
 
-namespace Playhead
+namespace Playhead.Models
 {
     /// <summary>
     /// Represents arguments for a <see cref="NowPlayingSessionManager.SessionListChanged"/> event.

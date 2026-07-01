@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Playhead
+namespace Playhead.Models
 {
     /// <summary>
     /// The structure that holds all the playback information about a media session.

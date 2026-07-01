@@ -9,39 +9,93 @@
 
     <Grid Padding="30">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Playhead Media Controller" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+        <TextBlock
+            Margin="0,0,0,20"
+            FontSize="24"
+            FontWeight="Bold"
+            Text="Playhead Media Controller" />
 
-        <Border Grid.Row="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" CornerRadius="8" Padding="20" Margin="0,0,0,20">
+        <Border
+            Grid.Row="1"
+            Margin="0,0,0,20"
+            Padding="20"
+            Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
+            CornerRadius="8">
             <StackPanel>
-                <TextBlock x:Name="TitleText" Text="No Media Selected" FontSize="20" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
-                <TextBlock x:Name="ArtistText" Text="Select a session below" FontSize="16" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" Margin="0,5,0,0" TextTrimming="CharacterEllipsis"/>
-                
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                    <Button Content="⏮ Prev" Click="Prev_Click" Width="80" Margin="0,0,10,0"/>
-                    <Button Content="▶ Play" Click="Play_Click" Width="80" Margin="0,0,10,0"/>
-                    <Button Content="⏸ Pause" Click="Pause_Click" Width="80" Margin="0,0,10,0"/>
-                    <Button Content="⏭ Next" Click="Next_Click" Width="80"/>
+                <TextBlock
+                    x:Name="TitleText"
+                    FontSize="20"
+                    FontWeight="SemiBold"
+                    Text="No Media Selected"
+                    TextTrimming="CharacterEllipsis" />
+                <TextBlock
+                    x:Name="ArtistText"
+                    Margin="0,5,0,0"
+                    FontSize="16"
+                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                    Text="Select a session below"
+                    TextTrimming="CharacterEllipsis" />
+
+                <StackPanel
+                    Margin="0,20,0,0"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        Width="80"
+                        Margin="0,0,10,0"
+                        Click="Prev_Click"
+                        Content="⏮ Prev" />
+                    <Button
+                        Width="80"
+                        Margin="0,0,10,0"
+                        Click="Play_Click"
+                        Content="▶ Play" />
+                    <Button
+                        Width="80"
+                        Margin="0,0,10,0"
+                        Click="Pause_Click"
+                        Content="⏸ Pause" />
+                    <Button
+                        Width="80"
+                        Click="Next_Click"
+                        Content="⏭ Next" />
                 </StackPanel>
             </StackPanel>
         </Border>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
-            <TextBlock Text="Active Sessions" FontSize="18" VerticalAlignment="Center" FontWeight="SemiBold"/>
-            <Button Content="Refresh" Margin="15,0,0,0" Click="Refresh_Click"/>
+        <StackPanel
+            Grid.Row="2"
+            Margin="0,0,0,10"
+            Orientation="Horizontal">
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Text="Active Sessions" />
+            <Button
+                Margin="15,0,0,0"
+                Click="Refresh_Click"
+                Content="Refresh" />
         </StackPanel>
 
-        <ListView x:Name="SessionsList" Grid.Row="3" SelectionChanged="SessionsList_SelectionChanged">
+        <ListView
+            x:Name="SessionsList"
+            Grid.Row="3"
+            SelectionChanged="SessionsList_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Padding="10">
-                        <TextBlock Text="{Binding SourceAppId}" FontWeight="SemiBold"/>
-                        <TextBlock Text="{Binding Title}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" FontSize="12"/>
+                        <TextBlock FontWeight="SemiBold" Text="{Binding SourceAppId}" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                            Text="{Binding Title}" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

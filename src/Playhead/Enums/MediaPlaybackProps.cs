@@ -1,6 +1,6 @@
 using System;
 
-namespace Playhead
+namespace Playhead.Enums
 {
     /// <summary>
     /// Specifies which properties of <see cref="MediaPlaybackInfo"/> are valid.
