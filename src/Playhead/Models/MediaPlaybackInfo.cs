@@ -7,7 +7,7 @@ namespace Playhead.Models
     /// The structure that holds all the playback information about a media session.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct MediaPlaybackInfo
+    public readonly struct MediaPlaybackInfo
     {
         private readonly int shuffleEnabled;
 

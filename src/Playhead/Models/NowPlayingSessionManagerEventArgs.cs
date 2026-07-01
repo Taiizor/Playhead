@@ -20,11 +20,11 @@ namespace Playhead.Models
         /// Gets the changed session's information.
         /// </summary>
         /// <return>A <see cref="NowPlayingSessionInfo"/> that represents the changed session which gave raise to the event.</return>
-        public NowPlayingSessionInfo NowPlayingSessionInfo { get; internal set; }
+        public NowPlayingSessionInfo? NowPlayingSessionInfo { get; internal set; }
 
         /// <summary>
         /// Gets the type of the session.
         /// </summary>
-        public string SessionTypeString { get; internal set; }
+        public string? SessionTypeString { get; internal set; }
     }
 }

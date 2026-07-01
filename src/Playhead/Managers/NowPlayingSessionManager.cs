@@ -229,8 +229,32 @@ namespace Playhead.Managers
             }
         }
 
-        //TODO
-        //manager.AddSession
+        /// <summary>
+        /// Adds a session to the session manager.
+        /// </summary>
+        /// <returns>True if the session was successfully added, otherwise false.</returns>
+        public bool AddSession(
+            NowPlayingSessionType type, 
+            IntPtr hwnd, 
+            uint pid, 
+            string appId, 
+            string sourceDeviceId, 
+            string renderDeviceId, 
+            string source, 
+            MediaPlaybackDataSource mediaControl, 
+            object connection, 
+            bool markAsCurrentSession, 
+            IntPtr processHandle)
+        {
+            if (numSelectInterface == 19041)
+            {
+                return sessionManager_19041.AddSession(type, hwnd, pid, appId, sourceDeviceId, renderDeviceId, source, mediaControl.GetIUnknownInterface, connection, markAsCurrentSession, processHandle) == 0;
+            }
+            else
+            {
+                return sessionManager_10586.AddSession(type, hwnd, pid, appId, sourceDeviceId, renderDeviceId, source, mediaControl.GetIUnknownInterface, connection, markAsCurrentSession, processHandle) == 0;
+            }
+        }
 
         #region Event
 
