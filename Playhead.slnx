@@ -5,6 +5,6 @@
   <Folder Name="/samples/">
     <Project Path="samples/Playhead.Sample.Console/Playhead.Sample.Console.csproj" />
     <Project Path="samples/Playhead.Sample.Console.FX462/Playhead.Sample.Console.FX462.csproj" />
-    <Project Path="samples/Playhead.Sample.UWP/Playhead.Sample.UWP.csproj" />
+    <Project Path="samples/Playhead.Sample.UWP/Playhead.Sample.UWP.csproj" Id="d47aeec2-aefe-466c-b413-2d04fc678ec1" />
   </Folder>
 </Solution>

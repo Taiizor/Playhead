@@ -1,24 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	  <TargetFrameworks>$(TargetFrameworks);netstandard2.0;netstandard2.1</TargetFrameworks>
-	  <TargetFrameworks>$(TargetFrameworks);net5.0;net6.0;net7.0;net8.0;net9.0;net10.0;net11.0</TargetFrameworks>
-	  <TargetFrameworks>$(TargetFrameworks);net45;net46;net461;net462;net47;net471;net472;net48;net481</TargetFrameworks>
-	  <TargetFrameworks>$(TargetFrameworks);netstandard1.1;netstandard1.2;netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;</TargetFrameworks>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
-    <Platforms>AnyCPU;x64;x86</Platforms>
-    <Description>A modern, highly professional NowPlayingSessionManager (SMTC) wrapper library.</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Authors>Taiizor</Authors>
-    <Company>Taiizor</Company>
-    <Copyright>Copyright © Taiizor 2026</Copyright>
-    <RepositoryUrl>https://github.com/Taiizor/Playhead</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Taiizor/Playhead</PackageProjectUrl>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>$(TargetFrameworks);netstandard2.0;netstandard2.1</TargetFrameworks>
+		<TargetFrameworks>$(TargetFrameworks);net5.0;net6.0;net7.0;net8.0;net9.0;net10.0;net11.0</TargetFrameworks>
+		<TargetFrameworks>$(TargetFrameworks);net45;net46;net461;net462;net47;net471;net472;net48;net481</TargetFrameworks>
+		<TargetFrameworks>$(TargetFrameworks);netstandard1.1;netstandard1.2;netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;</TargetFrameworks>
+		<LangVersion>preview</LangVersion>
+		<AnalysisLevel>preview</AnalysisLevel>
+		<Nullable>enable</Nullable>
+		<Platforms>AnyCPU;x64;x86</Platforms>
+		<Description>A modern, highly professional NowPlayingSessionManager (SMTC) wrapper library.</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Authors>Taiizor</Authors>
+		<Company>Taiizor</Company>
+		<Copyright>Copyright © Taiizor 2026</Copyright>
+		<RepositoryUrl>https://github.com/Taiizor/Playhead</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/Taiizor/Playhead</PackageProjectUrl>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
 
 </Project>
