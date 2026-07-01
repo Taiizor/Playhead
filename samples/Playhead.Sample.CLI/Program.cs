@@ -1,7 +1,7 @@
 using Playhead;
 using System;
 
-namespace Playhead.Sample.ConsoleApp
+namespace Playhead.Sample.CLI
 {
     class Program
     {

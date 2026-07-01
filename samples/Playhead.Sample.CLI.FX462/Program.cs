@@ -1,7 +1,7 @@
 using Playhead;
 using System;
 
-namespace Playhead.Sample.ConsoleApp.FX462
+namespace Playhead.Sample.CLI.FX462
 {
     class Program
     {
