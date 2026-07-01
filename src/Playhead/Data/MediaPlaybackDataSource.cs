@@ -39,7 +39,7 @@ namespace Playhead.Data
 
         internal object GetIUnknownInterface { get; }
 
-        internal MediaPlaybackDataSource(object playbackDataSourceIUnknown)
+        public MediaPlaybackDataSource(object playbackDataSourceIUnknown)
         {
             GetIUnknownInterface = playbackDataSourceIUnknown;
 
@@ -56,7 +56,7 @@ namespace Playhead.Data
             }
             else
             {
-                throw new NotSupportedException("QueryInterface failed due to non-available interface/guid");
+                // Leave null for fake sources or unrecognized ones
             }
         }
 

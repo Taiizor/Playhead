@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Playhead_CLI": {
-      "commandName": "Project",
-      "nativeDebugging": true
-    }
-  }
-}
