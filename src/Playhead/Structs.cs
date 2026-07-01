@@ -132,7 +132,7 @@ namespace Playhead
         /// <returns>
         /// A <see cref="TimeSpan"/> that represents the starting timestamp of the current media item.
         /// </returns>
-        public TimeSpan StartTime { get =>  startTime; }
+        public TimeSpan StartTime { get => startTime; }
 
         /// <summary>
         /// Gets the end timestamp of the current media item.
@@ -229,13 +229,13 @@ namespace Playhead
     /// </summary>
     public struct MediaObjectInfo
     {
-        private readonly string albumArtist;
-        private readonly string albumTitle;
-        private readonly string subtitle;
-        private readonly string title;
-        private readonly string artist;
-        private readonly string mediaClassPrimaryID;
-        private readonly string[] genres;
+        private readonly string? albumArtist;
+        private readonly string? albumTitle;
+        private readonly string? subtitle;
+        private readonly string? title;
+        private readonly string? artist;
+        private readonly string? mediaClassPrimaryID;
+        private readonly string[]? genres;
         private readonly uint albumTrackCount;
         private readonly uint trackNumber;
 
@@ -243,31 +243,31 @@ namespace Playhead
         /// Gets the album's artist.
         /// </summary>
         /// <returns>The name of the album artist.</returns>
-        public string AlbumArtist { get => albumArtist; }
+        public string? AlbumArtist { get => albumArtist; }
 
         /// <summary>
         /// Gets the title of the album.
         /// </summary>
         /// <returns>The title of the album.</returns>
-        public string AlbumTitle { get => albumTitle; }
+        public string? AlbumTitle { get => albumTitle; }
 
         /// <summary>
         /// Gets the subtitle.
         /// </summary>
         /// <returns>The subtitle of the media.</returns>
-        public string Subtitle { get => subtitle; }
+        public string? Subtitle { get => subtitle; }
 
         /// <summary>
         /// Gets the title.
         /// </summary>
         /// <returns>The title of the media.</returns>
-        public string Title { get => title; }
+        public string? Title { get => title; }
 
         /// <summary>
         /// Gets the artist's name.
         /// </summary>
         /// <returns>The name of the artist.</returns>
-        public string Artist { get => artist; }
+        public string? Artist { get => artist; }
 
         /// <summary>
         /// Gets the primary class ID or schema of the media.
@@ -278,13 +278,13 @@ namespace Playhead
         /// to get the corresponding <see cref="MediaPlaybackMode"/>.
         /// This property is kept intact due to its flexibility which the <see cref="MediaPlaybackMode"/> enumerations can't provide.
         /// </remarks>
-        public string MediaClassPrimaryID { get => mediaClassPrimaryID; }
+        public string? MediaClassPrimaryID { get => mediaClassPrimaryID; }
 
         /// <summary>
         /// Gets the list of genres.
         /// </summary>
         /// <returns>An array of strings representing the genres.</returns>
-        public string[] Genres { get => genres; }
+        public string[]? Genres { get => genres; }
 
         /// <summary>
         /// Gets the total number of tracks on the album.
@@ -298,13 +298,13 @@ namespace Playhead
         /// <returns>The number associated with the current track.</returns>
         public uint TrackNumber { get => trackNumber; }
 
-        internal MediaObjectInfo(string albumArtist,
-            string albumTitle,
-            string subtitle,
-            string title,
-            string artist,
-            string mediaClassPrimaryID,
-            string[] genres,
+        internal MediaObjectInfo(string? albumArtist,
+            string? albumTitle,
+            string? subtitle,
+            string? title,
+            string? artist,
+            string? mediaClassPrimaryID,
+            string[]? genres,
             uint albumTrackCount,
             uint trackNumber)
         {

@@ -5,8 +5,13 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64;x86</Platforms>
-    <Description>A modern NowPlayingSessionManager wrapper library - used for controlling SMTC apps.</Description>
+    <Description>A modern, highly professional NowPlayingSessionManager (SMTC) wrapper library.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>Taiizor</Authors>
+    <Company>Taiizor</Company>
+    <Copyright>Copyright © Taiizor 2026</Copyright>
+    <RepositoryUrl>https://github.com/Taiizor/Playhead</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Taiizor/Playhead</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup>

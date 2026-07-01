@@ -1,19 +1,57 @@
-# Playhead (.NET Standard 1.1, 2.0, .NET 4.5)
-### A NowPlayingSessionManager private API wrapper library.
-Provides access to playback sessions throughout the system that have integrated with SystemMediaTransportControls to provide playback info and allow remote control.
-For example it allows controlling the playback of Groove Music remotely.
+# Playhead
 
-[![nuget](https://img.shields.io/nuget/v/Playhead?style=for-the-badge)](https://www.nuget.org/packages/Playhead)
+![NuGet Version](https://img.shields.io/nuget/v/Playhead?style=for-the-badge&color=blue)
+![License](https://img.shields.io/github/license/Taiizor/Playhead?style=for-the-badge)
+![Frameworks](https://img.shields.io/badge/.NET-Standard_2.0_|_6.0_|_8.0_|_11.0-512BD4?style=for-the-badge&logo=dotnet)
 
-## Alternatives
-[GlobalSystemMediaTransportControlsSessionManager](https://docs.microsoft.com/en-us/uwp/api/windows.media.control.globalsystemmediatransportcontrolssessionmanager) is a WinRT API, available since 17763 (Windows 10 RS5 - version 1809). GSMTC is a wrapper around NPSM.
+**Playhead** is a modern, highly professional C# library that serves as a wrapper around the Windows NowPlayingSessionManager (NPSM) and System Media Transport Controls (SMTC) private APIs. 
 
-## Supported versions:
-Windows 10 1511 (10586) or newer
+Designed for **2026** and beyond, Playhead allows developers to seamlessly interact with media sessions across the system. It enables reading "Now Playing" data (metadata, timeline, playback status) and controlling media playback remotely for supported applications such as Spotify, Chrome, Edge, VLC, and Windows Media Player.
 
-## Note about UWP compatibility
-Make sure you have proper capability set in your app manifest, which is required since 17763, otherwise you'll get an access denied exception.
-## Events "\*Changed" will not work for partial trust/AppContainer executables ("pure" UWP) but it will for full trust.
+## Features
+- **Full Media Metadata Access**: Retrieve title, artist, album, genres, and even high-quality thumbnail streams.
+- **Playback Control**: Programmatically Play, Pause, Next, Previous, Stop, and seek timeline positions.
+- **Session Tracking**: Monitor the lifecycle of all media sessions active on the Windows machine.
+- **Modern .NET Support**: Targets `.NET Standard 2.0/2.1`, `.NET Framework 4.8+`, and `.NET 6.0` through `.NET 11.0`.
+- **Nullable Reference Types**: Built with modern C# standards including null-safety and `LangVersion=latest`.
 
-#### Required capability:
+## Compatibility
+Playhead requires **Windows 10 Version 1511 (Build 10586)** or newer.
+
+*Note on UWP/WinUI*: If you are building a modern Windows App (UWP/WinUI 3), you must ensure your app manifest includes the `globalMediaControl` capability to avoid access denied exceptions.
+```xml
 <uap7:Capability Name="globalMediaControl" />
+```
+
+## Supported Applications
+Playhead can interact with any application that integrates with the Windows SMTC APIs. For a comprehensive list of supported apps and browsers, check our [Supported Apps Documentation](./GSMTC-Support-And-Popular-Apps.md).
+
+## Installation
+You can install Playhead via the NuGet Package Manager:
+```bash
+dotnet add package Playhead
+```
+
+## Quick Start
+```csharp
+using Playhead;
+
+// Initialize the Session Manager
+var manager = new NowPlayingSessionManager();
+
+// Get the current active session
+var session = manager.CurrentSession;
+
+if (session != null)
+{
+    var mediaInfo = session.GetMediaObjectInfo();
+    Console.WriteLine($"Currently Playing: {mediaInfo.Title} by {mediaInfo.Artist}");
+    
+    // Pause the playback
+    session.SendMediaPlaybackCommand(MediaPlaybackCommands.Pause);
+}
+```
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Copyright © 2026 Taiizor

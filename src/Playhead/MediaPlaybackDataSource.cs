@@ -89,8 +89,8 @@ namespace Playhead
             PROPVARIANT pVariant;
             IPropertyStore propStore;
 
-            string title = "", artist = "", albumTitle = "", mediaClassPrimaryID = "", albumArtist = "", subtitle = "";
-            string[] genres = new string[0];
+            string? title = null, artist = null, albumTitle = null, mediaClassPrimaryID = null, albumArtist = null, subtitle = null;
+            string[]? genres = null;
             uint trackNumber = 0, albumTrackCount = 0;
 
             if (numSelectInterface == 20279)
@@ -168,9 +168,9 @@ namespace Playhead
         /// <returns>
         /// A <see cref="Stream"/> that is associated with the media playback's thumbnail image.
         /// </returns>
-        public Stream GetThumbnailStream()
+        public Stream? GetThumbnailStream()
         {
-            Stream outStream = null;
+            Stream? outStream = null;
 
             IPropertyStore propStore;
 
@@ -320,11 +320,11 @@ namespace Playhead
 
         #region Event
 
-        private MediaPlaybackDataChangedEventHandler eventHandler;
+        private MediaPlaybackDataChangedEventHandler? eventHandler;
 
         private readonly object subscriptionLock = new object();
 
-        private event EventHandler<MediaPlaybackDataChangedArgs> _mediaPlaybackDataChanged;
+        private event EventHandler<MediaPlaybackDataChangedArgs>? _mediaPlaybackDataChanged;
 
         /// <summary>
         /// Occurs when the session's media playback data have changed.
@@ -397,7 +397,7 @@ namespace Playhead
         /// <returns>
         /// The <see cref="MediaPlaybackDataSource"/> which raised the event.
         /// </returns>
-        public MediaPlaybackDataSource MediaPlaybackDataSource { get; internal set; }
+        public MediaPlaybackDataSource? MediaPlaybackDataSource { get; internal set; }
 
         /// <summary>
         /// Gets the type of the event.

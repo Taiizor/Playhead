@@ -101,7 +101,7 @@ namespace Playhead.Interop
 
             [PreserveSig]
             int RegisterEventHandler(INowPlayingSessionManagerEventHandler pEventHandler, out NPSMEventRegistrationToken pToken);
-            
+
             [PreserveSig]
             int UnregisterEventHandler(NPSMEventRegistrationToken token);
         }
@@ -187,7 +187,7 @@ namespace Playhead.Interop
         {
             [PreserveSig]
             int GetInfo(out IntPtr pHwnd, out uint pdwPID, [MarshalAs(UnmanagedType.LPWStr)] out string pszDeviceId);
-            
+
             [PreserveSig]
             int IsEqual([MarshalAs(UnmanagedType.IUnknown)] object pInfo /* INowPlayingSessionInfo */, [MarshalAs(UnmanagedType.Bool)] out bool pfIsEqual);
         }
