@@ -1,14 +1,16 @@
 using System;
 using System.Text;
+using System.Threading;
 
 namespace Playhead.Sample.CLI
 {
     class Program
     {
-        static readonly object lockObject = new();
-        static NowPlayingSessionManager manager;
         static NowPlayingSession session;
         static MediaPlaybackDataSource src;
+        static NowPlayingSessionManager manager;
+
+        static readonly Lock lockObject = new();
 
         static void Main(string[] args)
         {
@@ -16,10 +18,13 @@ namespace Playhead.Sample.CLI
             Console.OutputEncoding = Encoding.UTF8;
 
             manager = new NowPlayingSessionManager();
+
             manager.SessionListChanged += SessionListChanged;
+
             SessionListChanged(null, null);
 
             char letter;
+
             do
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
@@ -55,6 +60,7 @@ namespace Playhead.Sample.CLI
         private static void SessionListChanged(object sender, NowPlayingSessionManagerEventArgs e)
         {
             session = manager.CurrentSession;
+
             SetupEvents();
             PrintCurrentSession();
         }
@@ -64,11 +70,11 @@ namespace Playhead.Sample.CLI
             if (session != null)
             {
                 src = session.ActivateMediaPlaybackDataSource();
-                src.MediaPlaybackDataChanged += M_MediaPlaybackDataChanged;
+                src.MediaPlaybackDataChanged += MediaPlaybackDataChanged;
             }
         }
 
-        private static void M_MediaPlaybackDataChanged(object sender, MediaPlaybackDataChangedArgs e)
+        private static void MediaPlaybackDataChanged(object sender, MediaPlaybackDataChangedArgs e)
         {
             PrintCurrentSession();
         }

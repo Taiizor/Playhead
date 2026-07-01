@@ -7,44 +7,44 @@
   xmlns:uap7="http://schemas.microsoft.com/appx/manifest/uap/windows10/7"
   IgnorableNamespaces="uap uap7 mp">
 
-  <Identity
-    Name="70a97f11-b7ac-4d7a-b4fb-5ba74521ac77"
-    Publisher="CN=Taiizor, O=Taiizor"
-    Version="1.0.3.0" />
+	<Identity
+	  Name="70a97f11-b7ac-4d7a-b4fb-5ba74521ac77"
+	  Publisher="CN=Taiizor, O=Taiizor"
+	  Version="1.0.3.0" />
 
-  <mp:PhoneIdentity PhoneProductId="70a97f11-b7ac-4d7a-b4fb-5ba74521ac77" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+	<mp:PhoneIdentity PhoneProductId="70a97f11-b7ac-4d7a-b4fb-5ba74521ac77" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
-  <Properties>
-    <DisplayName>Playhead.Sample.UWP</DisplayName>
-    <PublisherDisplayName>Taiizor</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
-  </Properties>
+	<Properties>
+		<DisplayName>Playhead.Sample.UWP</DisplayName>
+		<PublisherDisplayName>Taiizor</PublisherDisplayName>
+		<Logo>Assets\StoreLogo.png</Logo>
+	</Properties>
 
-  <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
-  </Dependencies>
+	<Dependencies>
+		<TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+	</Dependencies>
 
-  <Resources>
-    <Resource Language="x-generate"/>
-  </Resources>
+	<Resources>
+		<Resource Language="x-generate"/>
+	</Resources>
 
-  <Applications>
-    <Application Id="App"
-      Executable="$targetnametoken$.exe"
-      EntryPoint="Playhead.Sample.UWP.App">
-      <uap:VisualElements
-        DisplayName="Playhead.Sample.UWP"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Playhead.Sample.UWP"
-        BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
-      </uap:VisualElements>
-    </Application>
-  </Applications>
+	<Applications>
+		<Application Id="App"
+		  Executable="$targetnametoken$.exe"
+		  EntryPoint="Playhead.Sample.UWP.App">
+			<uap:VisualElements
+			  DisplayName="Playhead.Sample.UWP"
+			  Square150x150Logo="Assets\Square150x150Logo.png"
+			  Square44x44Logo="Assets\Square44x44Logo.png"
+			  Description="Playhead.Sample.UWP"
+			  BackgroundColor="transparent">
+				<uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
+				<uap:SplashScreen Image="Assets\SplashScreen.png" />
+			</uap:VisualElements>
+		</Application>
+	</Applications>
 
-  <Capabilities>
-    <uap7:Capability Name="globalMediaControl" />
-  </Capabilities>
+	<Capabilities>
+		<uap7:Capability Name="globalMediaControl" />
+	</Capabilities>
 </Package>

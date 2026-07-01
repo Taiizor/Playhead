@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "NPSM_CLI": {
+    "Playhead_CLI": {
       "commandName": "Project",
       "nativeDebugging": true
     }
