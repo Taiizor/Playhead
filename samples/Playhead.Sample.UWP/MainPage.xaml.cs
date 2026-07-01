@@ -1,5 +1,4 @@
 using Playhead;
-using Playhead.Enums;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -26,13 +25,13 @@ namespace Playhead.Sample.UWP
             var activeSessions = _manager.GetSessions();
             foreach (var session in activeSessions)
             {
-                var info = session.GetSessionInfo();
-                var mediaInfo = session.GetMediaObjectInfo();
+                var dataSource = session.GetPlaybackDataSource();
+                var mediaInfo = dataSource?.GetMediaObjectInfo();
                 
                 Sessions.Add(new SessionViewModel
                 {
                     Session = session,
-                    SourceAppId = info?.SourceAppId ?? "Unknown App",
+                    SourceAppId = session.SourceAppId ?? "Unknown App",
                     Title = mediaInfo?.Title ?? "Unknown Title"
                 });
             }
@@ -48,7 +47,7 @@ namespace Playhead.Sample.UWP
             if (SessionsList.SelectedItem is SessionViewModel vm)
             {
                 _currentSession = vm.Session;
-                var mediaInfo = _currentSession.GetMediaObjectInfo();
+                var mediaInfo = _currentSession.GetPlaybackDataSource()?.GetMediaObjectInfo();
                 TitleText.Text = mediaInfo?.Title ?? "Unknown Title";
                 ArtistText.Text = mediaInfo?.Artist ?? "Unknown Artist";
             }
@@ -56,22 +55,22 @@ namespace Playhead.Sample.UWP
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-            _currentSession?.SendMediaPlaybackCommand(MediaPlaybackCommands.Play);
+            _currentSession?.GetPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Play);
         }
 
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
-            _currentSession?.SendMediaPlaybackCommand(MediaPlaybackCommands.Pause);
+            _currentSession?.GetPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Pause);
         }
 
         private void Prev_Click(object sender, RoutedEventArgs e)
         {
-            _currentSession?.SendMediaPlaybackCommand(MediaPlaybackCommands.Previous);
+            _currentSession?.GetPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Previous);
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-            _currentSession?.SendMediaPlaybackCommand(MediaPlaybackCommands.Next);
+            _currentSession?.GetPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Next);
         }
     }
 
