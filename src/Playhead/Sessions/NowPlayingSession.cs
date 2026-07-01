@@ -43,9 +43,14 @@ namespace Playhead
             {
                 IntPtr hWnd;
                 if (numSelectInterface == 14393)
+                {
                     session_14393.get_HWND(out hWnd);
+                }
                 else
+                {
                     session_10586.get_HWND(out hWnd);
+                }
+
                 return hWnd;
             }
         }
@@ -60,9 +65,14 @@ namespace Playhead
             {
                 uint pid;
                 if (numSelectInterface == 14393)
+                {
                     session_14393.get_PID(out pid);
+                }
                 else
+                {
                     session_10586.get_PID(out pid);
+                }
+
                 return pid;
             }
         }
@@ -77,9 +87,14 @@ namespace Playhead
             {
                 string id;
                 if (numSelectInterface == 14393)
+                {
                     session_14393.get_RenderDeviceId(out id);
+                }
                 else
+                {
                     session_10586.get_RenderDeviceId(out id);
+                }
+
                 return id;
             }
         }
@@ -94,9 +109,14 @@ namespace Playhead
             {
                 string id;
                 if (numSelectInterface == 14393)
+                {
                     session_14393.get_SourceAppId(out id);
+                }
                 else
+                {
                     session_10586.get_SourceAppId(out id);
+                }
+
                 return id;
             }
         }
@@ -111,9 +131,14 @@ namespace Playhead
             {
                 string id;
                 if (numSelectInterface == 14393)
+                {
                     session_14393.get_SourceDeviceId(out id);
+                }
                 else
+                {
                     session_10586.get_SourceDeviceId(out id);
+                }
+
                 return id;
             }
         }
@@ -127,9 +152,14 @@ namespace Playhead
             {
                 object iUnknown;
                 if (numSelectInterface == 14393)
+                {
                     session_14393.get_Connection(out iUnknown);
+                }
                 else
+                {
                     session_10586.get_Connection(out iUnknown);
+                }
+
                 return iUnknown;
             }
         }
@@ -143,9 +173,14 @@ namespace Playhead
         {
             object imediaPlaybackDataSourceIUnknown;
             if (numSelectInterface == 14393)
+            {
                 session_14393.ActivateMediaPlaybackDataSource(out imediaPlaybackDataSourceIUnknown);
+            }
             else
+            {
                 session_10586.ActivateMediaPlaybackDataSource(out imediaPlaybackDataSourceIUnknown);
+            }
+
             return new MediaPlaybackDataSource(imediaPlaybackDataSourceIUnknown);
         }
 
@@ -157,9 +192,14 @@ namespace Playhead
         {
             NowPlayingSessionType pType;
             if (numSelectInterface == 14393)
+            {
                 session_14393.get_SessionType(out pType);
+            }
             else
+            {
                 session_10586.get_SessionType(out pType);
+            }
+
             return pType;
         }
 
@@ -172,9 +212,14 @@ namespace Playhead
         {
             object pInfoIUnknown;
             if (numSelectInterface == 14393)
+            {
                 session_14393.get_Info(out pInfoIUnknown);
+            }
             else
+            {
                 session_10586.get_Info(out pInfoIUnknown);
+            }
+
             return new NowPlayingSessionInfo(pInfoIUnknown);
         }
 
@@ -186,7 +231,9 @@ namespace Playhead
         {
             object IUnknownToken = null;
             if (numSelectInterface == 14393)
+            {
                 session_14393.BeginInteractionWithSession(out IUnknownToken);
+            }
 
             return IUnknownToken;
         }

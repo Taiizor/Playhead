@@ -21,30 +21,28 @@ namespace Playhead
         // The media schema of a audio music playback.
         private const string ID_MS_MEDIA_SCHEMA_MUSIC = "{D1607DBC-E323-4BE2-86A1-48A42A28441E}";
 
-        private static PROPERTYKEY PKEY_Title = new PROPERTYKEY { fmtid = new Guid("F29F85E0-4FF9-1068-AB91-08002B27B3D9"), pid = 0x2 };
-        private static PROPERTYKEY PKEY_Music_TrackNumber = new PROPERTYKEY { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0x7 };
-        private static PROPERTYKEY PKEY_ThumbnailStream = new PROPERTYKEY { fmtid = new Guid("F29F85E0-4FF9-1068-AB91-08002B27B3D9"), pid = 0x1B };
-        private static PROPERTYKEY PKEY_Music_Genre = new PROPERTYKEY { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0xB };
-        private static PROPERTYKEY PKEY_Music_Artist = new PROPERTYKEY { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0x2 };
-        private static PROPERTYKEY PKEY_Music_AlbumTitle = new PROPERTYKEY { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0x4 };
-        private static PROPERTYKEY PKEY_Media_ClassPrimaryID = new PROPERTYKEY { fmtid = new Guid("64440492-4C8B-11D1-8B70-080036B11A03"), pid = 0xD };
+        private static PROPERTYKEY PKEY_Title = new() { fmtid = new Guid("F29F85E0-4FF9-1068-AB91-08002B27B3D9"), pid = 0x2 };
+        private static PROPERTYKEY PKEY_Music_TrackNumber = new() { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0x7 };
+        private static PROPERTYKEY PKEY_ThumbnailStream = new() { fmtid = new Guid("F29F85E0-4FF9-1068-AB91-08002B27B3D9"), pid = 0x1B };
+        private static PROPERTYKEY PKEY_Music_Genre = new() { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0xB };
+        private static PROPERTYKEY PKEY_Music_Artist = new() { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0x2 };
+        private static PROPERTYKEY PKEY_Music_AlbumTitle = new() { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0x4 };
+        private static PROPERTYKEY PKEY_Media_ClassPrimaryID = new() { fmtid = new Guid("64440492-4C8B-11D1-8B70-080036B11A03"), pid = 0xD };
 
         //Untested
-        private static PROPERTYKEY PKEY_Music_AlbumArtist = new PROPERTYKEY { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0xD };
+        private static PROPERTYKEY PKEY_Music_AlbumArtist = new() { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0xD };
 
-        private static PROPERTYKEY PKEY_AlbumTrackCount = new PROPERTYKEY { fmtid = new Guid("BAC8804B-BAA1-4E3F-9A11-EFB3EA519859"), pid = 0x2 };
-        private static PROPERTYKEY PKEY_Media_SubTitle = new PROPERTYKEY { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0x26 };
-
-        private readonly object playbackDataSourceIUnknown;
+        private static PROPERTYKEY PKEY_AlbumTrackCount = new() { fmtid = new Guid("BAC8804B-BAA1-4E3F-9A11-EFB3EA519859"), pid = 0x2 };
+        private static PROPERTYKEY PKEY_Media_SubTitle = new() { fmtid = new Guid("56A3372E-CE9C-11D2-9F0E-006097C686F6"), pid = 0x26 };
         private readonly IMediaPlaybackDataSource_20279 playbackDataSource_20279;
         private readonly IMediaPlaybackDataSource_10586 playbackDataSource_10586;
         private readonly int numSelectInterface = 0;
 
-        internal object GetIUnknownInterface { get => playbackDataSourceIUnknown; }
+        internal object GetIUnknownInterface { get; }
 
         internal MediaPlaybackDataSource(object playbackDataSourceIUnknown)
         {
-            this.playbackDataSourceIUnknown = playbackDataSourceIUnknown;
+            GetIUnknownInterface = playbackDataSourceIUnknown;
 
             //Since QI is a bit costly and 20279 isn't used (Windows Insider build ONLY), it's arranged to test 10586 interface FIRST
             if (playbackDataSourceIUnknown is IMediaPlaybackDataSource_10586 tPlaybackDataSource_10586)
@@ -71,13 +69,21 @@ namespace Playhead
         public static MediaPlaybackMode MediaSchemaToMediaPlaybackMode(string mediaSchema)
         {
             if (mediaSchema == ID_MS_MEDIA_SCHEMA_MUSIC)
+            {
                 return MediaPlaybackMode.Audio;
+            }
             else if (mediaSchema == ID_MS_MEDIA_SCHEMA_VIDEO)
+            {
                 return MediaPlaybackMode.Video;
+            }
             else if (mediaSchema == ID_MS_MEDIA_SCHEMA_PHOTO)
+            {
                 return MediaPlaybackMode.Image;
+            }
             else
+            {
                 return MediaPlaybackMode.Unknown;
+            }
         }
 
         /// <summary>
@@ -86,7 +92,6 @@ namespace Playhead
         /// <returns>A <see cref="MediaObjectInfo"/> that represents the current media info for this session.</returns>
         public MediaObjectInfo GetMediaObjectInfo()
         {
-            PROPVARIANT pVariant;
             IPropertyStore propStore;
 
             string? title = null, artist = null, albumTitle = null, mediaClassPrimaryID = null, albumArtist = null, subtitle = null;
@@ -94,13 +99,17 @@ namespace Playhead
             uint trackNumber = 0, albumTrackCount = 0;
 
             if (numSelectInterface == 20279)
+            {
                 playbackDataSource_20279.GetMediaObjectInfo(out propStore);
+            }
             else
+            {
                 playbackDataSource_10586.GetMediaObjectInfo(out propStore);
+            }
 
             if (propStore != null)
             {
-                if (propStore.GetValue(ref PKEY_Title, out pVariant) == 0 && pVariant.vt == VARTYPE.VT_LPWSTR)
+                if (propStore.GetValue(ref PKEY_Title, out PROPVARIANT pVariant) == 0 && pVariant.vt == VARTYPE.VT_LPWSTR)
                 {
                     title = Marshal.PtrToStringUni(pVariant.union.pwszVal);
                     NativeMethods.PropVariantClear(ref pVariant);
@@ -144,10 +153,12 @@ namespace Playhead
 
                 if (propStore.GetValue(ref PKEY_Music_Genre, out pVariant) == 0 && pVariant.vt == (VARTYPE.VT_VECTOR | VARTYPE.VT_LPWSTR))
                 {
-                    var countStr = pVariant.union.calpwstr.cElems;
+                    uint countStr = pVariant.union.calpwstr.cElems;
                     genres = new string[countStr];
                     for (int i = 0; i < countStr; i++)
+                    {
                         genres[i] = Marshal.PtrToStringUni(Marshal.ReadIntPtr(pVariant.union.calpwstr.pElems + (IntPtr.Size * i)));
+                    }
 
                     NativeMethods.PropVariantClear(ref pVariant);
                 }
@@ -175,13 +186,17 @@ namespace Playhead
             IPropertyStore propStore;
 
             if (numSelectInterface == 20279)
+            {
                 playbackDataSource_20279.GetMediaObjectInfo(out propStore);
+            }
             else
+            {
                 playbackDataSource_10586.GetMediaObjectInfo(out propStore);
+            }
 
             if (propStore != null && propStore.GetValue(ref PKEY_ThumbnailStream, out PROPVARIANT pVariant) == 0 && pVariant.vt == VARTYPE.VT_STREAM)
             {
-                var inStream = (IStream)Marshal.GetObjectForIUnknown(pVariant.union.pStream);
+                IStream inStream = (IStream)Marshal.GetObjectForIUnknown(pVariant.union.pStream);
                 outStream = new MemoryStream();
 
                 int cb = 4096;
@@ -219,9 +234,14 @@ namespace Playhead
         {
             MediaPlaybackInfo info;
             if (numSelectInterface == 20279)
+            {
                 playbackDataSource_20279.GetMediaPlaybackInfo(out info);
+            }
             else
+            {
                 playbackDataSource_10586.GetMediaPlaybackInfo(out info);
+            }
+
             return info;
         }
 
@@ -233,9 +253,14 @@ namespace Playhead
         {
             MediaTimelineProperties props;
             if (numSelectInterface == 20279)
+            {
                 playbackDataSource_20279.GetMediaTimelineProperties(out props);
+            }
             else
+            {
                 playbackDataSource_10586.GetMediaTimelineProperties(out props);
+            }
+
             return props;
         }
 
@@ -247,9 +272,14 @@ namespace Playhead
         {
             string id;
             if (numSelectInterface == 20279)
+            {
                 playbackDataSource_20279.GetParentApplicationId(out id);
+            }
             else
+            {
                 playbackDataSource_10586.GetParentApplicationId(out id);
+            }
+
             return id;
         }
 
@@ -261,9 +291,13 @@ namespace Playhead
         public bool SendMediaPlaybackCommand(MediaPlaybackCommands command)
         {
             if (numSelectInterface == 20279)
+            {
                 return playbackDataSource_20279.SendMediaPlaybackCommand(command) == 0;
+            }
             else
+            {
                 return playbackDataSource_10586.SendMediaPlaybackCommand(command) == 0;
+            }
         }
 
         /// <summary>
@@ -274,9 +308,13 @@ namespace Playhead
         public bool SendPlaybackPositionChangeRequest(TimeSpan requestedPlaybackPosition)
         {
             if (numSelectInterface == 20279)
+            {
                 return playbackDataSource_20279.SendPlaybackPositionChangeRequest(requestedPlaybackPosition.Ticks) == 0;
+            }
             else
+            {
                 return playbackDataSource_10586.SendPlaybackPositionChangeRequest(requestedPlaybackPosition.Ticks) == 0;
+            }
         }
 
         /// <summary>
@@ -287,9 +325,13 @@ namespace Playhead
         public bool SendPlaybackRateChangeRequest(double requestedPlaybackRate)
         {
             if (numSelectInterface == 20279)
+            {
                 return playbackDataSource_20279.SendPlaybackRateChangeRequest(requestedPlaybackRate) == 0;
+            }
             else
+            {
                 return playbackDataSource_10586.SendPlaybackRateChangeRequest(requestedPlaybackRate) == 0;
+            }
         }
 
         /// <summary>
@@ -300,9 +342,13 @@ namespace Playhead
         public bool SendRepeatModeChangeRequest(MediaPlaybackRepeatMode requestedRepeatMode)
         {
             if (numSelectInterface == 20279)
+            {
                 return playbackDataSource_20279.SendRepeatModeChangeRequest(requestedRepeatMode) == 0;
+            }
             else
+            {
                 return playbackDataSource_10586.SendRepeatModeChangeRequest(requestedRepeatMode) == 0;
+            }
         }
 
         /// <summary>
@@ -313,16 +359,20 @@ namespace Playhead
         public bool SendShuffleEnabledChangeRequest(bool requestedShuffle)
         {
             if (numSelectInterface == 20279)
+            {
                 return playbackDataSource_20279.SendShuffleEnabledChangeRequest(requestedShuffle) == 0;
+            }
             else
+            {
                 return playbackDataSource_10586.SendShuffleEnabledChangeRequest(requestedShuffle) == 0;
+            }
         }
 
         #region Event
 
         private MediaPlaybackDataChangedEventHandler? eventHandler;
 
-        private readonly object subscriptionLock = new object();
+        private readonly object subscriptionLock = new();
 
         private event EventHandler<MediaPlaybackDataChangedArgs>? _mediaPlaybackDataChanged;
 
@@ -340,9 +390,14 @@ namespace Playhead
                         eventHandler = new MediaPlaybackDataChangedEventHandler(this);
                         NPSMEventRegistrationToken token;
                         if (numSelectInterface == 20279)
+                        {
                             playbackDataSource_20279.RegisterEventHandler(eventHandler, out token);
+                        }
                         else
+                        {
                             playbackDataSource_10586.RegisterEventHandler(eventHandler, out token);
+                        }
+
                         eventHandler.Token = token;
                     }
 
@@ -357,9 +412,14 @@ namespace Playhead
                     if (_mediaPlaybackDataChanged == null)
                     {
                         if (numSelectInterface == 20279)
+                        {
                             playbackDataSource_20279.UnregisterEventHandler(eventHandler.Token);
+                        }
                         else
+                        {
                             playbackDataSource_10586.UnregisterEventHandler(eventHandler.Token);
+                        }
+
                         eventHandler = null;
                     }
                 }

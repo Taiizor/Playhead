@@ -9,12 +9,6 @@ namespace Playhead
     [StructLayout(LayoutKind.Sequential)]
     public struct MediaPlaybackInfo
     {
-        private readonly MediaPlaybackProps propsValid;
-        private readonly MediaPlaybackCapabilities playbackCaps;
-        private readonly MediaPlaybackState playbackState;
-        private readonly MediaPlaybackMode playbackMode;
-        private readonly MediaPlaybackRepeatMode repeatMode;
-        private readonly double playbackRate;
         private readonly int shuffleEnabled;
 
         //20279
@@ -30,42 +24,42 @@ namespace Playhead
         /// <summary>
         /// Gets a value indicating which properties of <see cref="MediaPlaybackInfo"/> are valid.
         /// </summary>
-        public MediaPlaybackProps PropsValid { get => propsValid; }
+        public MediaPlaybackProps PropsValid { get; }
 
         /// <summary>
         /// Gets the capabilities of the media playback.
         /// </summary>
-        public MediaPlaybackCapabilities PlaybackCaps { get => playbackCaps; }
+        public MediaPlaybackCapabilities PlaybackCaps { get; }
 
         /// <summary>
         /// Gets the state of the media playback.
         /// </summary>
-        public MediaPlaybackState PlaybackState { get => playbackState; }
+        public MediaPlaybackState PlaybackState { get; }
 
         /// <summary>
         /// Gets the mode or type of the media playback.
         /// </summary>
-        public MediaPlaybackMode PlaybackMode { get => playbackMode; }
+        public MediaPlaybackMode PlaybackMode { get; }
 
         /// <summary>
         /// Gets the auto-repeat mode of the media playback.
         /// </summary>
-        public MediaPlaybackRepeatMode RepeatMode { get => repeatMode; }
+        public MediaPlaybackRepeatMode RepeatMode { get; }
 
         /// <summary>
         /// Gets the rate of the media playback.
         /// </summary>
-        public double PlaybackRate { get => playbackRate; }
+        public double PlaybackRate { get; }
 
         /// <summary>
         /// Gets the shuffle state of the media playback.
         /// </summary>
-        public bool ShuffleEnabled { get => shuffleEnabled != 0; }
+        public bool ShuffleEnabled => shuffleEnabled != 0;
 
         //20279
         /// <summary>
         /// Gets the last playing time of the media playback.
         /// </summary>
-        public DateTime LastPlayingFileTime { get => DateTime.FromFileTime(lastPlayingFileTime); }
+        public DateTime LastPlayingFileTime => DateTime.FromFileTime(lastPlayingFileTime);
     }
 }

@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
-
 namespace Playhead.Interop
 {
     internal class Helpers
     {
         internal static OSVersion GetOSVersion()
         {
-            NativeMethods.RtlGetDeviceFamilyInfoEnum(out var version, out var b, out var c);
+            NativeMethods.RtlGetDeviceFamilyInfoEnum(out ulong version, out uint b, out uint c);
 
             return new OSVersion(
                 major: (ushort)((version & 0xFFFF000000000000L) >> 48),

@@ -1,5 +1,3 @@
-using System;
-
 namespace Playhead.Interop
 {
     internal struct OSVersion
@@ -9,10 +7,10 @@ namespace Playhead.Interop
         private readonly ushort build;
         private readonly ushort revision;
 
-        public ushort Major { get => major; }
-        public ushort Minor { get => minor; }
-        public ushort Build { get => build; }
-        public ushort Revision { get => revision; }
+        public ushort Major => major;
+        public ushort Minor => minor;
+        public ushort Build => build;
+        public ushort Revision => revision;
 
         public OSVersion(ushort major, ushort minor, ushort build, ushort revision)
         {

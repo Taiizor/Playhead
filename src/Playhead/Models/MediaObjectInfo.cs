@@ -1,5 +1,3 @@
-using System;
-
 namespace Playhead
 {
     /// <summary>
@@ -20,47 +18,47 @@ namespace Playhead
         /// <summary>
         /// Gets the album's artist.
         /// </summary>
-        public string? AlbumArtist { get => albumArtist; }
+        public string? AlbumArtist => albumArtist;
 
         /// <summary>
         /// Gets the title of the album.
         /// </summary>
-        public string? AlbumTitle { get => albumTitle; }
+        public string? AlbumTitle => albumTitle;
 
         /// <summary>
         /// Gets the subtitle.
         /// </summary>
-        public string? Subtitle { get => subtitle; }
+        public string? Subtitle => subtitle;
 
         /// <summary>
         /// Gets the title.
         /// </summary>
-        public string? Title { get => title; }
+        public string? Title => title;
 
         /// <summary>
         /// Gets the artist's name.
         /// </summary>
-        public string? Artist { get => artist; }
+        public string? Artist => artist;
 
         /// <summary>
         /// Gets the primary class ID or schema of the media.
         /// </summary>
-        public string? MediaClassPrimaryID { get => mediaClassPrimaryID; }
+        public string? MediaClassPrimaryID => mediaClassPrimaryID;
 
         /// <summary>
         /// Gets the list of genres.
         /// </summary>
-        public string[]? Genres { get => genres; }
+        public string[]? Genres => genres;
 
         /// <summary>
         /// Gets the total number of tracks on the album.
         /// </summary>
-        public uint AlbumTrackCount { get => albumTrackCount; }
+        public uint AlbumTrackCount => albumTrackCount;
 
         /// <summary>
         /// Gets the track's number.
         /// </summary>
-        public uint TrackNumber { get => trackNumber; }
+        public uint TrackNumber => trackNumber;
 
         internal MediaObjectInfo(string? albumArtist,
             string? albumTitle,

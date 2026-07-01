@@ -7,7 +7,7 @@ namespace Playhead.Interop
     {
         //VALIDATED FOR: 20279-19041-18362-17763-17134-16299-15063-14393-10586
 
-        internal static Guid CLSID_NowPlayingSessionManager = new Guid("BCBB9860-C012-4AD7-A938-6E337AE6ABA5");
+        internal static Guid CLSID_NowPlayingSessionManager = new("BCBB9860-C012-4AD7-A938-6E337AE6ABA5");
 
         public struct NPSMEventRegistrationToken
         {

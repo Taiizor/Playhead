@@ -19,16 +19,15 @@ namespace Playhead
         private readonly int numSelectInterface = 0;
 
         //global cache of OS version
-        private static readonly OSVersion osVersion = Helpers.GetOSVersion();
-        internal static OSVersion OSVersion { get => osVersion; }
+        internal static OSVersion OSVersion { get; } = Helpers.GetOSVersion();
 
         /// <summary>
         /// Creates an instance of the <see cref="NowPlayingSessionManager"/>.
         /// </summary>
         public NowPlayingSessionManager()
         {
-            Guid guid_INowPlayingSessionManager_19041 = new Guid("3b6a7908-ce07-4ba9-878c-6e4a15db5e5b");
-            Guid guid_INowPlayingSessionManager_10586 = new Guid("A7052211-8B56-43C4-8F26-12852F7303A3");
+            Guid guid_INowPlayingSessionManager_19041 = new("3b6a7908-ce07-4ba9-878c-6e4a15db5e5b");
+            Guid guid_INowPlayingSessionManager_10586 = new("A7052211-8B56-43C4-8F26-12852F7303A3");
 
             if (NativeMethods.CoCreateInstance(ref CLSID_NowPlayingSessionManager, null, 4 | 1024 /* CLSCTX_LOCAL_SERVER | CLSCTX_NO_CODE_DOWNLOAD */, ref guid_INowPlayingSessionManager_19041, out sessionManagerIUnknown) == 0)
             {
@@ -57,9 +56,13 @@ namespace Playhead
                 object sessionIUnknown = null;
 
                 if (numSelectInterface == 19041)
+                {
                     sessionManager_19041.get_CurrentSession(out sessionIUnknown);
+                }
                 else
+                {
                     sessionManager_10586.get_CurrentSession(out sessionIUnknown);
+                }
 
                 return sessionIUnknown == null ? null : new NowPlayingSession(sessionIUnknown);
             }
@@ -74,9 +77,13 @@ namespace Playhead
             {
                 ulong count;
                 if (numSelectInterface == 19041)
+                {
                     sessionManager_19041.get_Count(out count);
+                }
                 else
+                {
                     sessionManager_10586.get_Count(out count);
+                }
 
                 return count;
             }
@@ -91,13 +98,20 @@ namespace Playhead
             uint count;
             IntPtr sessionsIUnknownPtr;
             if (numSelectInterface == 19041)
+            {
                 sessionManager_19041.GetSessions(out count, out sessionsIUnknownPtr);
+            }
             else
+            {
                 sessionManager_10586.GetSessions(out count, out sessionsIUnknownPtr);
+            }
 
             NowPlayingSession[] array = new NowPlayingSession[count];
             for (int i = 0; i < count; i++)
+            {
                 array[i] = new NowPlayingSession(Marshal.GetObjectForIUnknown(Marshal.ReadIntPtr(sessionsIUnknownPtr + (IntPtr.Size * i))));
+            }
+
             return array;
         }
 
@@ -108,9 +122,13 @@ namespace Playhead
         public bool SetNextCurrentSession()
         {
             if (numSelectInterface == 19041)
+            {
                 return sessionManager_19041.SetCurrentNextSession() == 0;
+            }
             else
+            {
                 return sessionManager_10586.SetCurrentNextSession() == 0;
+            }
         }
 
         /// <summary>
@@ -121,9 +139,13 @@ namespace Playhead
         public bool SetCurrentSession(NowPlayingSessionInfo pInfo)
         {
             if (numSelectInterface == 19041)
+            {
                 return sessionManager_19041.SetCurrentSession(pInfo.GetIUnknownInterface) == 0;
+            }
             else
+            {
                 return sessionManager_10586.SetCurrentSession(pInfo.GetIUnknownInterface) == 0;
+            }
         }
 
         /// <summary>
@@ -134,9 +156,13 @@ namespace Playhead
         public bool RemoveSession(NowPlayingSessionInfo pInfo)
         {
             if (numSelectInterface == 19041)
+            {
                 return sessionManager_19041.RemoveSession(pInfo.GetIUnknownInterface) == 0;
+            }
             else
+            {
                 return sessionManager_10586.RemoveSession(pInfo.GetIUnknownInterface) == 0;
+            }
         }
 
         /// <summary>
@@ -149,12 +175,18 @@ namespace Playhead
             object sessionIUnknown;
 
             if (numSelectInterface == 19041)
+            {
                 sessionManager_19041.FindSession(pInfo.GetIUnknownInterface, out sessionIUnknown);
+            }
             else
+            {
                 sessionManager_10586.FindSession(pInfo.GetIUnknownInterface, out sessionIUnknown);
+            }
 
             if (sessionIUnknown == null)
+            {
                 return null;
+            }
 
             return new NowPlayingSession(sessionIUnknown);
         }
@@ -167,9 +199,13 @@ namespace Playhead
         public bool Refresh(IntPtr hWnd)
         {
             if (numSelectInterface == 19041)
+            {
                 return sessionManager_19041.Refresh(hWnd) == 0;
+            }
             else
+            {
                 return sessionManager_10586.Refresh(hWnd) == 0;
+            }
         }
 
         /// <summary>
@@ -184,9 +220,13 @@ namespace Playhead
         public bool Update(bool fEnabled, IntPtr hwnd, uint dwPID, ulong unknown, MediaPlaybackDataSource pSource)
         {
             if (numSelectInterface == 19041)
+            {
                 return sessionManager_19041.Update(fEnabled, hwnd, dwPID, unknown, pSource.GetIUnknownInterface) == 0;
+            }
             else
+            {
                 return sessionManager_10586.Update(fEnabled, hwnd, dwPID, pSource.GetIUnknownInterface) == 0;
+            }
         }
 
         //TODO
@@ -196,7 +236,7 @@ namespace Playhead
 
         private NowPlayingSessionManagerEventHandler eventHandler;
 
-        private readonly object subscriptionLock = new object();
+        private readonly object subscriptionLock = new();
 
         private event EventHandler<NowPlayingSessionManagerEventArgs> _sessionListChanged;
 
@@ -214,9 +254,14 @@ namespace Playhead
                         eventHandler = new NowPlayingSessionManagerEventHandler(this);
                         NPSMEventRegistrationToken token;
                         if (numSelectInterface == 19041)
+                        {
                             sessionManager_19041.RegisterEventHandler(eventHandler, out token);
+                        }
                         else
+                        {
                             sessionManager_10586.RegisterEventHandler(eventHandler, out token);
+                        }
+
                         eventHandler.Token = token;
                     }
 
@@ -232,9 +277,14 @@ namespace Playhead
                     if (_sessionListChanged == null)
                     {
                         if (numSelectInterface == 19041)
+                        {
                             sessionManager_19041.UnregisterEventHandler(eventHandler.Token);
+                        }
                         else
+                        {
                             sessionManager_10586.UnregisterEventHandler(eventHandler.Token);
+                        }
+
                         eventHandler = null;
                     }
                 }

@@ -62,33 +62,33 @@ namespace Playhead
         /// <summary>
         /// Gets the starting timestamp of the current media item.
         /// </summary>
-        public TimeSpan StartTime { get => new TimeSpan(startTime); }
+        public TimeSpan StartTime => new(startTime);
 
         /// <summary>
         /// Gets the end timestamp of the current media item.
         /// </summary>
-        public TimeSpan EndTime { get => new TimeSpan(endTime); }
+        public TimeSpan EndTime => new(endTime);
 
         /// <summary>
         /// Gets the earliest timestamp at which the current media item can currently seek to.
         /// </summary>
-        public TimeSpan MinSeekTime { get => new TimeSpan(minSeekTime); }
+        public TimeSpan MinSeekTime => new(minSeekTime);
 
         /// <summary>
         /// Gets the furthest timestamp at which the current media item can currently seek to.
         /// </summary>
-        public TimeSpan MaxSeekTime { get => new TimeSpan(maxSeekTime); }
+        public TimeSpan MaxSeekTime => new(maxSeekTime);
 
         /// <summary>
         /// Gets the playback position, current as of <see cref="PositionSetFileTime"/>.
         /// </summary>
-        public TimeSpan Position { get => new TimeSpan(position); }
+        public TimeSpan Position => new(position);
 #endif
 
         //17134+
         /// <summary>
         /// Gets the <see cref="DateTime"/> at which the timeline properties were last updated.
         /// </summary>
-        public DateTime PositionSetFileTime { get => DateTime.FromFileTime(positionSetFileTime); }
+        public DateTime PositionSetFileTime => DateTime.FromFileTime(positionSetFileTime);
     }
 }

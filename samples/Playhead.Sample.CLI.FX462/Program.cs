@@ -1,17 +1,20 @@
-using Playhead;
 using System;
+using System.Text;
 
 namespace Playhead.Sample.CLI.FX462
 {
     class Program
     {
-        static readonly object lockObject = new object();
+        static readonly object lockObject = new();
         static NowPlayingSessionManager manager;
         static NowPlayingSession session;
         static MediaPlaybackDataSource src;
 
         static void Main(string[] args)
         {
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
+
             manager = new NowPlayingSessionManager();
             manager.SessionListChanged += SessionListChanged;
             SessionListChanged(null, null);
@@ -19,24 +22,33 @@ namespace Playhead.Sample.CLI.FX462
             char letter;
             do
             {
-                var key = Console.ReadKey(true);
+                ConsoleKeyInfo key = Console.ReadKey(true);
                 letter = key.KeyChar.ToString().ToLower()[0];
 
                 if (letter == 'p' || key.Key == ConsoleKey.Spacebar)
+                {
                     src.SendMediaPlaybackCommand(MediaPlaybackCommands.PlayPauseToggle); //MediaPlaybackCommands.Play or MediaPlaybackCommands.Pause
+                }
 
                 if (letter == 'd' || key.Key == ConsoleKey.RightArrow)
+                {
                     src.SendMediaPlaybackCommand(MediaPlaybackCommands.Next);
+                }
 
                 if (letter == 'a' || key.Key == ConsoleKey.LeftArrow)
+                {
                     src.SendMediaPlaybackCommand(MediaPlaybackCommands.Previous);
+                }
 
                 if (letter == 'r' && session != null)
+                {
                     src.SendMediaPlaybackCommand(MediaPlaybackCommands.Rewind);
+                }
 
                 if (letter == 'f' && session != null)
+                {
                     src.SendMediaPlaybackCommand(MediaPlaybackCommands.FastForward);
-
+                }
             } while (letter != 'q');
         }
 
@@ -69,9 +81,9 @@ namespace Playhead.Sample.CLI.FX462
                 {
                     Console.Clear();
 
-                    var mediaDetails = src.GetMediaObjectInfo();
-                    var mediaPlaybackInfo = src.GetMediaPlaybackInfo();
-                    var mediaTimeline = src.GetMediaTimelineProperties();
+                    MediaObjectInfo mediaDetails = src.GetMediaObjectInfo();
+                    MediaPlaybackInfo mediaPlaybackInfo = src.GetMediaPlaybackInfo();
+                    MediaTimelineProperties mediaTimeline = src.GetMediaTimelineProperties();
 
                     Console.WriteLine("Title: " + mediaDetails.Title);
                     Console.WriteLine("Artist: " + mediaDetails.Artist);

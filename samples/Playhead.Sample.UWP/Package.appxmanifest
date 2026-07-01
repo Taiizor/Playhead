@@ -9,14 +9,14 @@
 
   <Identity
     Name="70a97f11-b7ac-4d7a-b4fb-5ba74521ac77"
-    Publisher="CN=Daoudi Abdel Ouadoud, O=Daoudi Abdel Ouadoud, L=Rovereto, S=Trento, PostalCode=38068, C=IT"
+    Publisher="CN=Taiizor, O=Taiizor"
     Version="1.0.3.0" />
 
   <mp:PhoneIdentity PhoneProductId="70a97f11-b7ac-4d7a-b4fb-5ba74521ac77" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Playhead.Sample.UWP</DisplayName>
-    <PublisherDisplayName>ADX</PublisherDisplayName>
+    <PublisherDisplayName>Taiizor</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

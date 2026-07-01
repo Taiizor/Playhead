@@ -8,16 +8,15 @@ namespace Playhead
     /// </summary>
     public class NowPlayingSessionInfo : IEquatable<NowPlayingSessionInfo>
     {
-        private readonly object infoIUnknown;
         private readonly INowPlayingSessionInfo_19041 info_19041;
         private readonly INowPlayingSessionInfo_10586 info_10586;
         private readonly int numSelectInterface = 0;
 
-        internal object GetIUnknownInterface { get => infoIUnknown; }
+        internal object GetIUnknownInterface { get; }
 
         internal NowPlayingSessionInfo(object infoIUnknown)
         {
-            this.infoIUnknown = infoIUnknown;
+            GetIUnknownInterface = infoIUnknown;
 
             if (infoIUnknown is INowPlayingSessionInfo_19041 tInfo_19041)
             {
@@ -45,9 +44,13 @@ namespace Playhead
         public bool GetInfo(out IntPtr hWnd, out uint PID, out string DeviceId)
         {
             if (numSelectInterface == 19041)
+            {
                 return info_19041.GetInfo(out hWnd, out PID, out DeviceId) == 0;
+            }
             else
+            {
                 return info_10586.GetInfo(out hWnd, out PID, out DeviceId) == 0;
+            }
         }
 
         /// <inheritdoc/>
@@ -60,12 +63,19 @@ namespace Playhead
                 //Since we don't know which one is which, we need to gather and test OS build...
 
                 if (NowPlayingSessionManager.OSVersion.Build >= 19582)
-                    (info_19041 as INowPlayingSessionInfo_19582).IsEqual(other.infoIUnknown, out val);
+                {
+                    (info_19041 as INowPlayingSessionInfo_19582).IsEqual(other.GetIUnknownInterface, out val);
+                }
                 else
-                    info_19041.IsEqual(other.infoIUnknown, out val);
+                {
+                    info_19041.IsEqual(other.GetIUnknownInterface, out val);
+                }
             }
             else
-                info_10586.IsEqual(other.infoIUnknown, out val);
+            {
+                info_10586.IsEqual(other.GetIUnknownInterface, out val);
+            }
+
             return val;
         }
     }
