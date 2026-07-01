@@ -25,7 +25,7 @@ namespace Playhead.Sample.UWP
             var activeSessions = _manager.GetSessions();
             foreach (var session in activeSessions)
             {
-                var dataSource = session.GetPlaybackDataSource();
+                var dataSource = session.ActivateMediaPlaybackDataSource();
                 var mediaInfo = dataSource?.GetMediaObjectInfo();
                 
                 Sessions.Add(new SessionViewModel
@@ -47,7 +47,7 @@ namespace Playhead.Sample.UWP
             if (SessionsList.SelectedItem is SessionViewModel vm)
             {
                 _currentSession = vm.Session;
-                var mediaInfo = _currentSession.GetPlaybackDataSource()?.GetMediaObjectInfo();
+                var mediaInfo = _currentSession.ActivateMediaPlaybackDataSource()?.GetMediaObjectInfo();
                 TitleText.Text = mediaInfo?.Title ?? "Unknown Title";
                 ArtistText.Text = mediaInfo?.Artist ?? "Unknown Artist";
             }
@@ -55,22 +55,22 @@ namespace Playhead.Sample.UWP
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-            _currentSession?.GetPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Play);
+            _currentSession?.ActivateMediaPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Play);
         }
 
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
-            _currentSession?.GetPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Pause);
+            _currentSession?.ActivateMediaPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Pause);
         }
 
         private void Prev_Click(object sender, RoutedEventArgs e)
         {
-            _currentSession?.GetPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Previous);
+            _currentSession?.ActivateMediaPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Previous);
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-            _currentSession?.GetPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Next);
+            _currentSession?.ActivateMediaPlaybackDataSource()?.SendMediaPlaybackCommand(MediaPlaybackCommands.Next);
         }
     }
 
