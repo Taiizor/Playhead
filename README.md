@@ -2,7 +2,7 @@
 
 ![NuGet Version](https://img.shields.io/nuget/v/Playhead?style=for-the-badge&color=blue)
 ![License](https://img.shields.io/github/license/Taiizor/Playhead?style=for-the-badge)
-![Frameworks](https://img.shields.io/badge/.NET-Standard_2.0_|_6.0_|_8.0_|_11.0-512BD4?style=for-the-badge&logo=dotnet)
+![Frameworks](https://img.shields.io/badge/.NET-Standard_1.1_|_4.5_|_8.0_|_11.0-512BD4?style=for-the-badge&logo=dotnet)
 
 **Playhead** is a modern, highly professional C# library that serves as a wrapper around the Windows NowPlayingSessionManager (NPSM) and System Media Transport Controls (SMTC) private APIs. 
 
@@ -12,7 +12,7 @@ Designed for **2026** and beyond, Playhead allows developers to seamlessly inter
 - **Full Media Metadata Access**: Retrieve title, artist, album, genres, and even high-quality thumbnail streams.
 - **Playback Control**: Programmatically Play, Pause, Next, Previous, Stop, and seek timeline positions.
 - **Session Tracking**: Monitor the lifecycle of all media sessions active on the Windows machine.
-- **Modern .NET Support**: Targets `.NET Standard 2.0/2.1`, `.NET Framework 4.8+`, and `.NET 6.0` through `.NET 11.0`.
+- **Modern & Legacy .NET Support**: Targets `.NET Standard 1.1/2.0/2.1`, `.NET Framework 4.5/4.6.2/4.8+`, and `.NET 6.0` through `.NET 11.0`.
 - **Nullable Reference Types**: Built with modern C# standards including null-safety and `LangVersion=latest`.
 
 ## Compatibility

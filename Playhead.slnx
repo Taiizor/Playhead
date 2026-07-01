@@ -1,5 +1,10 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/Playhead/Playhead.csproj" />
+</Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/Playhead.Sample.Console/Playhead.Sample.Console.csproj" />
+    <Project Path="samples/Playhead.Sample.Console.FX462/Playhead.Sample.Console.FX462.csproj" />
+    <Project Path="samples/Playhead.Sample.UWP/Playhead.Sample.UWP.csproj" />
   </Folder>
 </Solution>
