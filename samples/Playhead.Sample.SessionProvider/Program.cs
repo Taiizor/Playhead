@@ -1,9 +1,5 @@
-using Playhead.Data;
-using Playhead.Enums;
 using Playhead.Managers;
-using Playhead.Sessions;
 using System;
-using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace Playhead.Sample.SessionProvider
@@ -36,16 +32,48 @@ namespace Playhead.Sample.SessionProvider
     [ComVisible(true)]
     public class FakeDataSource : IFakeDataSource_19041, IFakeDataSource_10586
     {
-        public int GetMediaPlaybackInfo(IntPtr p) => unchecked((int)0x80004001);
-        public int SendMediaPlaybackCommand(int c) => unchecked((int)0x80004001);
+        public int GetMediaPlaybackInfo(IntPtr p)
+        {
+            return unchecked((int)0x80004001);
+        }
+
+        public int SendMediaPlaybackCommand(int c)
+        {
+            return unchecked((int)0x80004001);
+        }
+
         public int GetMediaObjectInfo(out IntPtr p) { p = IntPtr.Zero; return unchecked((int)0x80004001); }
-        public int GetMediaTimelineProperties(IntPtr p) => unchecked((int)0x80004001);
+        public int GetMediaTimelineProperties(IntPtr p)
+        {
+            return unchecked((int)0x80004001);
+        }
+
         public int RegisterEventHandler(IntPtr h, out long t) { t = 0; return unchecked((int)0x80004001); }
-        public int UnregisterEventHandler(long t) => unchecked((int)0x80004001);
-        public int SendRepeatModeChangeRequest(int r) => unchecked((int)0x80004001);
-        public int SendPlaybackRateChangeRequest(double r) => unchecked((int)0x80004001);
-        public int SendShuffleEnabledChangeRequest(bool s) => unchecked((int)0x80004001);
-        public int SendPlaybackPositionChangeRequest(long p) => unchecked((int)0x80004001);
+        public int UnregisterEventHandler(long t)
+        {
+            return unchecked((int)0x80004001);
+        }
+
+        public int SendRepeatModeChangeRequest(int r)
+        {
+            return unchecked((int)0x80004001);
+        }
+
+        public int SendPlaybackRateChangeRequest(double r)
+        {
+            return unchecked((int)0x80004001);
+        }
+
+        public int SendShuffleEnabledChangeRequest(bool s)
+        {
+            return unchecked((int)0x80004001);
+        }
+
+        public int SendPlaybackPositionChangeRequest(long p)
+        {
+            return unchecked((int)0x80004001);
+        }
+
         public int GetMediaObjectInfoAsSet(Guid g, out IntPtr p) { p = IntPtr.Zero; return unchecked((int)0x80004001); }
     }
 
@@ -56,8 +84,8 @@ namespace Playhead.Sample.SessionProvider
             Console.WriteLine("==================================================");
             Console.WriteLine(" Playhead AddSession (SessionProvider) Sample App ");
             Console.WriteLine("==================================================");
-            
-            NowPlayingSessionManager manager = new NowPlayingSessionManager();
+
+            NowPlayingSessionManager manager = new();
 
             string fakeAppId = "Playhead.FakeApp.exe";
             uint fakePid = (uint)System.Diagnostics.Process.GetCurrentProcess().Id;
