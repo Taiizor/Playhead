@@ -13,7 +13,7 @@
     <Project Path="samples/Playhead.Sample.SessionProvider/Playhead.Sample.SessionProvider.csproj" />
     <Project Path="samples/Playhead.Sample.UWP/Playhead.Sample.UWP.csproj" Id="d47aeec2-aefe-466c-b413-2d04fc678ec1">
       <Platform Project="x64" />
-      <Deploy Solution="Debug|*" />
+      <Deploy />
     </Project>
   </Folder>
 </Solution>
