@@ -3,14 +3,14 @@
 
 # Playhead
 
-![NuGet Version](https://img.shields.io/nuget/v/Playhead?style=for-the-badge&color=blue)
-![NuGet Downloads](https://img.shields.io/nuget/dt/Playhead?style=for-the-badge&color=blue)
-![Build Status](https://img.shields.io/github/actions/workflow/status/Taiizor/Playhead/build.yml?branch=develop&style=for-the-badge&label=build)
-![License](https://img.shields.io/github/license/Taiizor/Playhead?style=for-the-badge)
-![.NET Standard 1.1](https://img.shields.io/badge/.NET_Standard-1.1-512BD4?style=for-the-badge&logo=dotnet)
-![.NET Framework 4.5](https://img.shields.io/badge/.NET_Framework-4.5-512BD4?style=for-the-badge&logo=dotnet)
-![.NET 8.0](https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet)
-![.NET 11.0](https://img.shields.io/badge/.NET-11.0-512BD4?style=for-the-badge&logo=dotnet)
+[![NuGet Version](https://img.shields.io/nuget/v/Playhead?style=for-the-badge&color=blue)](https://www.nuget.org/packages/Playhead/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/Playhead?style=for-the-badge&color=blue)](https://www.nuget.org/packages/Playhead/)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/Taiizor/Playhead/build.yml?branch=develop&style=for-the-badge&label=build)](https://github.com/Taiizor/Playhead/actions)
+[![License](https://img.shields.io/github/license/Taiizor/Playhead?style=for-the-badge)](https://github.com/Taiizor/Playhead/blob/develop/LICENSE)
+[![.NET Standard 1.1](https://img.shields.io/badge/.NET_Standard-1.1-512BD4?style=for-the-badge&logo=dotnet)](https://dotnet.microsoft.com/download)
+[![.NET Framework 4.5](https://img.shields.io/badge/.NET_Framework-4.5-512BD4?style=for-the-badge&logo=dotnet)](https://dotnet.microsoft.com/download)
+[![.NET 8.0](https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet)](https://dotnet.microsoft.com/download)
+[![.NET 11.0](https://img.shields.io/badge/.NET-11.0-512BD4?style=for-the-badge&logo=dotnet)](https://dotnet.microsoft.com/download)
 
 </div>
 
