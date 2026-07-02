@@ -46,7 +46,7 @@ Playhead requires **Windows 10 Version 1511 (Build 10586)** or newer.
 ```
 
 ## Supported Applications
-Playhead can interact with any application that integrates with the Windows SMTC APIs. For a comprehensive list of supported apps and browsers, check our [Supported Apps Documentation](./GSMTC-Support-And-Popular-Apps.md).
+Playhead can interact with any application that integrates with the Windows SMTC APIs. For a comprehensive list of supported apps and browsers, check our [Supported Apps Documentation](../.github/GSMTC-Support-And-Popular-Apps.md).
 
 ## Installation
 You can install Playhead via the NuGet Package Manager:
@@ -102,17 +102,17 @@ manager.SessionListChanged += (sender, args) =>
 };
 ```
 
-See the [samples](./samples) folder for complete, runnable console, .NET Framework, and UWP examples.
+See the [samples](../samples) folder for complete, runnable console, .NET Framework, and UWP examples.
 
 ## Documentation
-Playhead ships with full XML documentation comments, so IntelliSense will guide you through the entire public API directly in Visual Studio / VS Code / Rider. For deeper API exploration, browse the [`src/Playhead`](./src/Playhead) source directly.
+Playhead ships with full XML documentation comments, so IntelliSense will guide you through the entire public API directly in Visual Studio / VS Code / Rider. For deeper API exploration, browse the [`src/Playhead`](../src/Playhead) source directly.
 
 ## Contributing
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our development setup, coding guidelines, and the process for submitting pull requests.
+Contributions are welcome! Please read [CONTRIBUTING.md](../.github/CONTRIBUTING.md) for details on our development setup, coding guidelines, and the process for submitting pull requests.
 
 ## Security
-If you discover a security vulnerability, please follow the responsible disclosure process described in [SECURITY.md](SECURITY.md) rather than opening a public issue.
+If you discover a security vulnerability, please follow the responsible disclosure process described in [SECURITY.md](../.github/SECURITY.md) rather than opening a public issue.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
 Copyright © 2026 Taiizor
