@@ -1,4 +1,9 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="global.json" />
+    <File Path="NuGet.Config" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="src/Playhead/Playhead.csproj" />
 </Folder>
