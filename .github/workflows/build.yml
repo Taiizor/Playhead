@@ -1,0 +1,60 @@
+name: Build
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [develop, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build & Pack (all target frameworks)
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET (stable)
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: |
+            8.0.x
+            9.0.x
+            10.0.x
+
+      - name: Setup .NET 11 (preview)
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "11.0.x"
+          dotnet-quality: "preview"
+
+      - name: Restore
+        run: dotnet restore Playhead.slnx
+
+      - name: Build library (full target framework matrix)
+        run: dotnet build src/Playhead/Playhead.csproj -c Release --no-restore
+
+      - name: Build samples (console + session provider)
+        run: |
+          dotnet build samples/Playhead.Sample.CLI/Playhead.Sample.CLI.csproj -c Release
+          dotnet build samples/Playhead.Sample.CLI.FX462/Playhead.Sample.CLI.FX462.csproj -c Release
+          dotnet build samples/Playhead.Sample.SessionProvider/Playhead.Sample.SessionProvider.csproj -c Release
+
+      - name: Pack
+        run: dotnet pack src/Playhead/Playhead.csproj -c Release --no-build -o artifacts
+
+      - name: Upload NuGet package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-packages
+          path: |
+            artifacts/*.nupkg
+            artifacts/*.snupkg
+          if-no-files-found: error

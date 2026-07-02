@@ -1,39 +1,59 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFrameworks>$(TargetFrameworks);netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
-		<TargetFrameworks>$(TargetFrameworks);netstandard2.0;netstandard2.1</TargetFrameworks>
-		<TargetFrameworks>$(TargetFrameworks);net5.0;net6.0;net7.0;net8.0;net9.0;net10.0;net11.0</TargetFrameworks>
-		<TargetFrameworks>$(TargetFrameworks);net45;net46;net461;net462;net47;net471;net472;net48;net481</TargetFrameworks>
+    <PropertyGroup>
 		<TargetFrameworks>$(TargetFrameworks);netstandard1.1;netstandard1.2;netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;</TargetFrameworks>
-		<LangVersion>preview</LangVersion>
-		<AnalysisLevel>preview</AnalysisLevel>
-		<Nullable>enable</Nullable>
-		<Platforms>AnyCPU;x64;x86</Platforms>
-		<Description>A modern, highly professional NowPlayingSessionManager (SMTC) wrapper library.</Description>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Authors>Taiizor</Authors>
-		<Company>Taiizor</Company>
-		<Copyright>Copyright © Taiizor 2026</Copyright>
-		<RepositoryUrl>https://github.com/Taiizor/Playhead</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/Taiizor/Playhead</PackageProjectUrl>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-	</PropertyGroup>
+		<TargetFrameworks>$(TargetFrameworks);net45;net46;net461;net462;net47;net471;net472;net48;net481</TargetFrameworks>
+		<TargetFrameworks>$(TargetFrameworks);net5.0;net6.0;net7.0;net8.0;net9.0;net10.0;net11.0</TargetFrameworks>
+		<TargetFrameworks>$(TargetFrameworks);netstandard2.0;netstandard2.1</TargetFrameworks>
+		<TargetFrameworks>$(TargetFrameworks);netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
+        <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+        <DefaultLanguage>en-GB</DefaultLanguage>
+        <RootNamespace>Playhead</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
 	<!-- NuGet package metadata -->
-	<PropertyGroup>
-		<Version>1.0.1</Version>
-		<PackageId>Playhead</PackageId>
+    <PropertyGroup>
+        <ApplicationIcon>Logo.ico</ApplicationIcon>
+        <Version>1.0.1</Version>
+        <AssemblyVersion>$(Version)</AssemblyVersion>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Playhead</Title>
+        <PackageId>Playhead</PackageId>
 		<Product>Playhead</Product>
+        <Authors>Taiizor</Authors>
+        <Copyright>Copyright © $([System.DateTime]::Today.ToString(yyyy)) $(Authors)</Copyright>
+        <Summary>A modern, highly professional NowPlayingSessionManager (SMTC) wrapper library.</Summary>
+        <Description>...</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageLicenseExpression></PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageReleaseNotes>https://github.com/Taiizor/Playhead/blob/develop/CHANGELOG.md</PackageReleaseNotes>
 		<PackageTags>smtc;now-playing;npsm;npsmlib;media;windows;media-controls;playback;transport-controls;dotnet;csharp</PackageTags>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageIcon>Logo.png</PackageIcon>
-		<RepositoryType>git</RepositoryType>
-		<PackageReleaseNotes>https://github.com/Taiizor/Playhead/blob/develop/CHANGELOG.md</PackageReleaseNotes>
-	</PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <!--<DocumentationFile>..\$(Title)\bin$(OutputPath)\$(Configuration)\$(TargetFramework)\$(Title).xml</DocumentationFile>-->
+        <PackageProjectUrl>https://github.com/Taiizor/Playhead</PackageProjectUrl>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>git://github.com/Taiizor/Playhead</RepositoryUrl>
+        <PackageDescription>$(Description)</PackageDescription>
+        <PackageIcon>Logo.png</PackageIcon>
+        <Company>$(Authors)</Company>
+        <Owners>$(Authors)</Owners>
+        <AnalysisLevel>preview</AnalysisLevel>
+        <LangVersion>preview</LangVersion>
+        <NeutralLanguage>$(DefaultLanguage)</NeutralLanguage>
+        <FileVersion>$(Version)</FileVersion>
+        <Configurations>Debug;Release</Configurations>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub">
+            <Version>11.0.100-preview.5.26302.115</Version>
+            <PrivateAssets>All</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
 
 	<!-- Symbols & Source Link for a first-class debugging experience when consuming the package -->
 	<PropertyGroup>
@@ -44,9 +64,7 @@
 		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.300" PrivateAssets="All" />
-
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard'">
 		<!-- Pin known-vulnerable transitive dependencies (pulled in by NETStandard.Library for the netstandard1.x targets) to patched versions -->
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
 		<PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
@@ -54,8 +72,14 @@
 
 	<!-- Package assets: README and icon shown on nuget.org -->
 	<ItemGroup>
+		<None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
 		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
-		<None Include="..\..\Logo.png" Pack="true" PackagePath="\" />
+		<None Include="..\..\.images\Logo.png" Pack="true" PackagePath="\" />
+		<None Include="..\..\.images\Logo.ico" Pack="true" PackagePath="\" />
 	</ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Properties\" />
+    </ItemGroup>
 
 </Project>

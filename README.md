@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="../.Logo.png" alt="Playhead logo" width="120" />
+  <img src=".images/Logo.png" alt="Playhead logo" width="120" />
 
 # Playhead
 
