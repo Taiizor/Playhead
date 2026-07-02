@@ -1,0 +1,22 @@
+# Configuration for PR Labeler
+
+documentation:
+    - changed-files:
+          - any-glob-to-any-file:
+                - "*.md"
+                - docs/**
+
+tests:
+    - changed-files:
+          - any-glob-to-any-file:
+                - tests/**
+
+samples:
+    - changed-files:
+          - any-glob-to-any-file:
+                - samples/**
+
+ci:
+    - changed-files:
+          - any-glob-to-any-file:
+                - .github/**

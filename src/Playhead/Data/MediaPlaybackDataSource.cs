@@ -39,6 +39,11 @@ namespace Playhead.Data
 
         internal object GetIUnknownInterface { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MediaPlaybackDataSource"/> class from a raw COM
+        /// IUnknown reference, selecting the highest compatible <c>IMediaPlaybackDataSource</c> interface.
+        /// </summary>
+        /// <param name="playbackDataSourceIUnknown">The IUnknown COM object representing the media playback data source.</param>
         public MediaPlaybackDataSource(object playbackDataSourceIUnknown)
         {
             GetIUnknownInterface = playbackDataSourceIUnknown;
