@@ -7,7 +7,10 @@
 ![NuGet Downloads](https://img.shields.io/nuget/dt/Playhead?style=for-the-badge&color=blue)
 ![Build Status](https://img.shields.io/github/actions/workflow/status/Taiizor/Playhead/build.yml?branch=develop&style=for-the-badge&label=build)
 ![License](https://img.shields.io/github/license/Taiizor/Playhead?style=for-the-badge)
-![Frameworks](https://img.shields.io/badge/.NET-Standard_1.1_|_4.5_|_8.0_|_11.0-512BD4?style=for-the-badge&logo=dotnet)
+![.NET Standard 1.1](https://img.shields.io/badge/.NET_Standard-1.1-512BD4?style=for-the-badge&logo=dotnet)
+![.NET Framework 4.5](https://img.shields.io/badge/.NET_Framework-4.5-512BD4?style=for-the-badge&logo=dotnet)
+![.NET 8.0](https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet)
+![.NET 11.0](https://img.shields.io/badge/.NET-11.0-512BD4?style=for-the-badge&logo=dotnet)
 
 </div>
 
