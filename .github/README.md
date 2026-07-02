@@ -1,5 +1,5 @@
 <div align="center">
-  <img src=".images/Logo.png" alt="Playhead logo" width="120" />
+  <img src="../.images/Logo.png" alt="Playhead logo" width="120" />
 
 # Playhead
 
@@ -59,6 +59,7 @@ dotnet add package Playhead
 using Playhead.Data;
 using Playhead.Enums;
 using Playhead.Managers;
+using Playhead.Models;
 using Playhead.Sessions;
 
 // Initialize the Session Manager
