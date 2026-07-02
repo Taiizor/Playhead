@@ -1,5 +1,10 @@
 # Configuration for PR Labeler
 
+core:
+    - changed-files:
+          - any-glob-to-any-file:
+                - src/**
+
 documentation:
     - changed-files:
           - any-glob-to-any-file:

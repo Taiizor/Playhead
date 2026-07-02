@@ -57,6 +57,10 @@
   description: Low priority issue
 
 # Areas
+- name: core
+  color: "0052cc"
+  description: Core library source code
+
 - name: tests
   color: "bfd4f2"
   description: Test files and testing
