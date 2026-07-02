@@ -111,4 +111,4 @@ Common types: `Fix`, `Feature`, `Refactor`, `Docs`, `Test`, `Chore`.
 
 ## Reporting Bugs & Requesting Features
 
-Please use the issue templates provided when opening a [new issue](https://github.com/Taiizor/Playhead/issues/new/choose). For security vulnerabilities, see [SECURITY.md](SECURITY.md) instead of opening a public issue.
+Please use the issue templates provided when opening a [new issue](https://github.com/Taiizor/Playhead/issues/new/choose). For security vulnerabilities, see [SECURITY.md](../.github/SECURITY.md) instead of opening a public issue.
