@@ -76,7 +76,7 @@ Watch the output for errors on every target framework, not just the one you deve
 
 ## Coding Guidelines
 
-- Formatting and naming conventions are enforced via [`.editorconfig`](.editorconfig) — most editors will pick this up automatically.
+- Formatting and naming conventions are enforced via [`.editorconfig`](../editorconfig) — most editors will pick this up automatically.
 - Nullable reference types (`Nullable=enable`) are already on for the library project; keep new public APIs null-safe.
 - All new public members should have XML documentation comments (`GenerateDocumentationFile` is enabled, and missing docs on public members will raise `CS1591` warnings).
 - Prefer the smallest, most surgical change that fully addresses the issue — avoid unrelated refactors in the same PR.
