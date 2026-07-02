@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Taiizor/Playhead/develop/Logo.png" alt="Playhead logo" width="120" />
+  <img src="../.Logo.png" alt="Playhead logo" width="120" />
 
 # Playhead
 
