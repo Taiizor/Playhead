@@ -1,0 +1,74 @@
+name: Bug Report
+description: Report a problem with Playhead
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the sections below as completely as possible.
+        Since Playhead wraps a Windows-only private API, the Windows build number and target framework are especially important.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior, including which media app was playing (Spotify, Chrome, VLC, etc.).
+      placeholder: |
+        1. Start playback in ...
+        2. Call `session.GetMediaTimelineProperties()`
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: input
+    id: playhead-version
+    attributes:
+      label: Playhead Version
+      placeholder: e.g. 1.0.1
+    validations:
+      required: true
+
+  - type: input
+    id: target-framework
+    attributes:
+      label: Target Framework
+      placeholder: e.g. net8.0, net462, netstandard2.0
+    validations:
+      required: true
+
+  - type: input
+    id: windows-build
+    attributes:
+      label: Windows Build
+      description: Run `winver` or `[System.Environment]::OSVersion` to find this.
+      placeholder: e.g. Windows 11 23H2 (Build 22631.3155)
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Output / Stack Trace
+      render: shell
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Anything else that might help us understand the issue (e.g. the source app's process name, HWND, PID).
