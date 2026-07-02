@@ -53,6 +53,7 @@ dotnet add package Playhead
 ```csharp
 using Playhead.Data;
 using Playhead.Enums;
+using Playhead.Models;
 using Playhead.Managers;
 using Playhead.Sessions;
 
@@ -102,10 +103,10 @@ See the [samples](https://github.com/Taiizor/Playhead/tree/develop/samples) fold
 Playhead ships with full XML documentation comments, so IntelliSense will guide you through the entire public API directly in Visual Studio / VS Code / Rider. For deeper API exploration, browse the [`src/Playhead`](https://github.com/Taiizor/Playhead/tree/develop/src/Playhead) source directly.
 
 ## Contributing
-Contributions are welcome! Please read [CONTRIBUTING.md](https://github.com/Taiizor/Playhead/blob/develop/CONTRIBUTING.md) for details on our development setup, coding guidelines, and the process for submitting pull requests.
+Contributions are welcome! Please read [CONTRIBUTING.md](https://github.com/Taiizor/Playhead/blob/develop/.github/CONTRIBUTING.md) for details on our development setup, coding guidelines, and the process for submitting pull requests.
 
 ## Security
-If you discover a security vulnerability, please follow the responsible disclosure process described in [SECURITY.md](https://github.com/Taiizor/Playhead/blob/develop/SECURITY.md) rather than opening a public issue.
+If you discover a security vulnerability, please follow the responsible disclosure process described in [SECURITY.md](https://github.com/Taiizor/Playhead/blob/develop/.github/SECURITY.md) rather than opening a public issue.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/Taiizor/Playhead/blob/develop/LICENSE) file for details.

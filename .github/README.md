@@ -58,8 +58,8 @@ dotnet add package Playhead
 ```csharp
 using Playhead.Data;
 using Playhead.Enums;
-using Playhead.Managers;
 using Playhead.Models;
+using Playhead.Managers;
 using Playhead.Sessions;
 
 // Initialize the Session Manager
