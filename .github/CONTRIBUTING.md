@@ -16,7 +16,7 @@ First off, thank you for considering contributing to **Playhead**! This document
 
 ## Code of Conduct
 
-This project adheres to a [Code of Conduct](.github/CODE_OF_CONDUCT.md). By participating, you are expected to uphold it.
+This project adheres to a [Code of Conduct](../.github/CODE_OF_CONDUCT.md). By participating, you are expected to uphold it.
 
 ## Prerequisites
 
