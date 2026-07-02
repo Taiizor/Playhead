@@ -15,7 +15,7 @@
 
 	<!-- NuGet package metadata -->
     <PropertyGroup>
-        <ApplicationIcon>Logo.ico</ApplicationIcon>
+        <ApplicationIcon>Resources\Playhead.ico</ApplicationIcon>
         <Version>1.0.1</Version>
         <AssemblyVersion>$(Version)</AssemblyVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -38,7 +38,7 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>git://github.com/Taiizor/Playhead</RepositoryUrl>
         <PackageDescription>$(Description)</PackageDescription>
-        <PackageIcon>Logo.png</PackageIcon>
+        <PackageIcon>Playhead.png</PackageIcon>
         <Company>$(Authors)</Company>
         <Owners>$(Authors)</Owners>
         <AnalysisLevel>preview</AnalysisLevel>
@@ -64,19 +64,27 @@
 		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
 	</PropertyGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard'">
-		<!-- Pin known-vulnerable transitive dependencies (pulled in by NETStandard.Library for the netstandard1.x targets) to patched versions -->
-		<PackageReference Include="System.Net.Http" Version="4.3.4" />
-		<PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
-	</ItemGroup>
+    <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard1'))">
+        <!-- Pin known-vulnerable transitive dependencies (pulled in by NETStandard.Library for the netstandard1.x targets) to patched versions -->
+        <PackageReference Include="System.Net.Http" Version="4.3.4" />
+        <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+    </ItemGroup>
 
 	<!-- Package assets: README and icon shown on nuget.org -->
-	<ItemGroup>
-		<None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
-		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
-		<None Include="..\..\.images\Logo.png" Pack="true" PackagePath="\" />
-		<None Include="..\..\.images\Logo.ico" Pack="true" PackagePath="\" />
-	</ItemGroup>
+    <ItemGroup>
+        <None Include="README.md">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+        <None Include="..\..\LICENSE">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+        <None Include="Resources\Playhead.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
 
     <ItemGroup>
         <Folder Include="Properties\" />
