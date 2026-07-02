@@ -1,10 +1,10 @@
 # Global System Media Transport Controls (GSMTC) support and popular media apps
 
-ModernFlyouts' Media Session Controls will support every application that makes use of the [System Media Transport Controls **aka SMTC** API](https://docs.microsoft.com/en-us/uwp/api/windows.media.systemmediatransportcontrols) to manage their media playback.
+**Playhead** will support interacting with any application that makes use of the [System Media Transport Controls **aka SMTC** API](https://docs.microsoft.com/en-us/uwp/api/windows.media.systemmediatransportcontrols) to manage their media playback.
 
-The built-in Windows Media Flyout will also only support those apps.
+The built-in Windows Media Flyout also only supports these same apps.
 
-Users tend to know which functionalities are supported by ModernFlyouts' Media Sessions Controls for their apps of interest ([#230](https://github.com/ModernFlyouts-Community/ModernFlyouts/issues/230) for instance).
+This document outlines which features are supported by SMTC for various popular media applications.
 
 
 ### Legend
