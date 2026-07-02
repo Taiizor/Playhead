@@ -9,6 +9,12 @@ namespace Playhead.Models
     [StructLayout(LayoutKind.Sequential)]
     public readonly struct MediaPlaybackInfo
     {
+        private readonly MediaPlaybackProps propsValid;
+        private readonly MediaPlaybackCapabilities playbackCaps;
+        private readonly MediaPlaybackState playbackState;
+        private readonly MediaPlaybackMode playbackMode;
+        private readonly MediaPlaybackRepeatMode repeatMode;
+        private readonly double playbackRate;
         private readonly int shuffleEnabled;
 
         //20279
@@ -24,32 +30,32 @@ namespace Playhead.Models
         /// <summary>
         /// Gets a value indicating which properties of <see cref="MediaPlaybackInfo"/> are valid.
         /// </summary>
-        public MediaPlaybackProps PropsValid { get; }
+        public MediaPlaybackProps PropsValid => propsValid;
 
         /// <summary>
         /// Gets the capabilities of the media playback.
         /// </summary>
-        public MediaPlaybackCapabilities PlaybackCaps { get; }
+        public MediaPlaybackCapabilities PlaybackCaps => playbackCaps;
 
         /// <summary>
         /// Gets the state of the media playback.
         /// </summary>
-        public MediaPlaybackState PlaybackState { get; }
+        public MediaPlaybackState PlaybackState => playbackState;
 
         /// <summary>
         /// Gets the mode or type of the media playback.
         /// </summary>
-        public MediaPlaybackMode PlaybackMode { get; }
+        public MediaPlaybackMode PlaybackMode => playbackMode;
 
         /// <summary>
         /// Gets the auto-repeat mode of the media playback.
         /// </summary>
-        public MediaPlaybackRepeatMode RepeatMode { get; }
+        public MediaPlaybackRepeatMode RepeatMode => repeatMode;
 
         /// <summary>
         /// Gets the rate of the media playback.
         /// </summary>
-        public double PlaybackRate { get; }
+        public double PlaybackRate => playbackRate;
 
         /// <summary>
         /// Gets the shuffle state of the media playback.
