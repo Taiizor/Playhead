@@ -16,10 +16,10 @@
 
 ## Checklist
 
-- [ ] I have read the [CONTRIBUTING](../CONTRIBUTING.md) guide.
+- [ ] I have read the [CONTRIBUTING](../.github/CONTRIBUTING.md) guide.
 - [ ] `dotnet build src/Playhead/Playhead.csproj -c Release` succeeds across the full target framework matrix.
 - [ ] I have added/updated XML documentation comments for new or changed public APIs.
-- [ ] If I touched a native-interop struct (`[StructLayout(LayoutKind.Sequential)]`), I verified the field layout still matches the native COM struct (see [CONTRIBUTING.md](../CONTRIBUTING.md#working-with-the-native-interop-layer)).
+- [ ] If I touched a native-interop struct (`[StructLayout(LayoutKind.Sequential)]`), I verified the field layout still matches the native COM struct (see [CONTRIBUTING.md](../.github/CONTRIBUTING.md#working-with-the-native-interop-layer)).
 - [ ] I have updated the [CHANGELOG](../CHANGELOG.md) under `[Unreleased]`, if applicable.
 
 ## Additional Notes
