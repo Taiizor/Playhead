@@ -25,7 +25,7 @@
         <Authors>Taiizor</Authors>
         <Copyright>Copyright © $([System.DateTime]::Today.ToString(yyyy)) $(Authors)</Copyright>
         <Summary>A modern, highly professional NowPlayingSessionManager (SMTC) wrapper library.</Summary>
-        <Description>...</Description>
+        <Description>Playhead is a modern, highly professional C# library that serves as a wrapper around the Windows NowPlayingSessionManager (NPSM) and System Media Transport Controls (SMTC) private APIs. It allows developers to seamlessly interact with media sessions across the system, enabling reading "Now Playing" data (metadata, timeline, playback status) and controlling media playback remotely for supported applications such as Spotify, Chrome, Edge, VLC, and Windows Media Player.</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageLicenseExpression></PackageLicenseExpression>
