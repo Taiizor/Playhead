@@ -51,7 +51,7 @@ jobs:
         run: dotnet pack src/Playhead/Playhead.csproj -c Release --no-build -o artifacts
 
       - name: Upload NuGet package artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: nuget-packages
           path: |
