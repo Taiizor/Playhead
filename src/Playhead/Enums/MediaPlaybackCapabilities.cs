@@ -1,5 +1,3 @@
-using System;
-
 namespace Playhead.Enums
 {
     /// <summary>

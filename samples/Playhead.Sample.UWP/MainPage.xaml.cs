@@ -1,12 +1,11 @@
+using Playhead.Data;
+using Playhead.Enums;
+using Playhead.Managers;
+using Playhead.Models;
+using Playhead.Sessions;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Playhead;
-using Playhead.Managers;
-using Playhead.Sessions;
-using Playhead.Data;
-using Playhead.Models;
-using Playhead.Enums;
 
 namespace Playhead.Sample.UWP
 {
