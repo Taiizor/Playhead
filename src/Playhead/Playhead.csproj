@@ -16,7 +16,7 @@
 	<!-- NuGet package metadata -->
     <PropertyGroup>
         <ApplicationIcon>Resources\Playhead.ico</ApplicationIcon>
-        <Version>1.0.3</Version>
+        <Version>1.0.4</Version>
         <AssemblyVersion>$(Version)</AssemblyVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>Playhead</Title>
