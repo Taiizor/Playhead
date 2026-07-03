@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using static Playhead.Interop.COMInterop;
 
 namespace Playhead.Sessions
@@ -6,7 +7,12 @@ namespace Playhead.Sessions
     /// <summary>
     /// Represents a media playback session from another application providing info about that session and possibly allowing control.
     /// </summary>
-    public class NowPlayingSession
+    /// <remarks>
+    /// This type wraps a native COM reference. Call <see cref="Dispose"/> (or use a
+    /// <c>using</c> statement/declaration) once the session is no longer needed so the
+    /// underlying COM reference is released deterministically.
+    /// </remarks>
+    public class NowPlayingSession : IDisposable
     {
         private readonly object sessionIUnknown;
         private readonly INowPlayingSession_14393 session_14393;
@@ -236,6 +242,26 @@ namespace Playhead.Sessions
             }
 
             return IUnknownToken;
+        }
+
+        private bool disposed;
+
+        /// <summary>
+        /// Releases the underlying COM reference. The instance should not be used after calling this method.
+        /// </summary>
+        public void Dispose()
+        {
+            if (disposed)
+            {
+                return;
+            }
+
+            if (sessionIUnknown != null && Marshal.IsComObject(sessionIUnknown))
+            {
+                Marshal.ReleaseComObject(sessionIUnknown);
+            }
+
+            disposed = true;
         }
     }
 }

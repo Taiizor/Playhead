@@ -9,8 +9,8 @@ internal class Program
     {
         Console.WriteLine("Starting Playhead Quick Start Sample...");
 
-        // Initialize the Session Manager
-        NowPlayingSessionManager manager = new();
+        // Initialize the Session Manager (disposed automatically when Main exits)
+        using NowPlayingSessionManager manager = new();
 
         // Setup event handlers to react to changes
         manager.SessionListChanged += (sender, args) =>

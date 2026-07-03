@@ -9,7 +9,13 @@ namespace Playhead.Data
     /// <summary>
     /// Represents the media playback data of a media session and provides the ability to control its playback.
     /// </summary>
-    public class MediaPlaybackDataSource
+    /// <remarks>
+    /// This type wraps a native COM reference and registers COM event callbacks. Call
+    /// <see cref="Dispose"/> (or use a <c>using</c> statement/declaration) once the instance
+    /// is no longer needed so the underlying COM reference and any registered
+    /// <see cref="MediaPlaybackDataChanged"/> handler are released deterministically.
+    /// </remarks>
+    public class MediaPlaybackDataSource : IDisposable
     {
         // The media schema of an image playback.
         private const string ID_MS_MEDIA_SCHEMA_PHOTO = "{6FB2E74A-B8CB-40BB-93F3-FAC5F00FA203}";
@@ -445,6 +451,57 @@ namespace Playhead.Data
                 CurrentMediaPlaybackInstance._mediaPlaybackDataChanged?.Invoke(CurrentMediaPlaybackInstance,
                     new MediaPlaybackDataChangedArgs { MediaPlaybackDataSource = new MediaPlaybackDataSource(source), DataChangedEvent = dataChangedEvent });
             }
+        }
+
+        #endregion
+
+        #region IDisposable
+
+        private bool disposed;
+
+        /// <summary>
+        /// Unregisters any active <see cref="MediaPlaybackDataChanged"/> event handler and releases
+        /// the underlying COM reference. The instance should not be used after calling this method.
+        /// </summary>
+        public void Dispose()
+        {
+            if (disposed)
+            {
+                return;
+            }
+
+            lock (subscriptionLock)
+            {
+                if (eventHandler != null)
+                {
+                    try
+                    {
+                        if (numSelectInterface == 20279)
+                        {
+                            playbackDataSource_20279.UnregisterEventHandler(eventHandler.Token);
+                        }
+                        else
+                        {
+                            playbackDataSource_10586.UnregisterEventHandler(eventHandler.Token);
+                        }
+                    }
+                    catch (COMException)
+                    {
+                        // The native data source may already be gone; ignore during cleanup.
+                    }
+
+                    eventHandler = null;
+                }
+
+                _mediaPlaybackDataChanged = null;
+            }
+
+            if (GetIUnknownInterface != null && Marshal.IsComObject(GetIUnknownInterface))
+            {
+                Marshal.ReleaseComObject(GetIUnknownInterface);
+            }
+
+            disposed = true;
         }
 
         #endregion

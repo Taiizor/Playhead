@@ -85,7 +85,7 @@ namespace Playhead.Sample.SessionProvider
             Console.WriteLine(" Playhead AddSession (SessionProvider) Sample App ");
             Console.WriteLine("==================================================");
 
-            NowPlayingSessionManager manager = new();
+            using NowPlayingSessionManager manager = new();
 
             string fakeAppId = "Playhead.FakeApp.exe";
             uint fakePid = (uint)System.Diagnostics.Process.GetCurrentProcess().Id;

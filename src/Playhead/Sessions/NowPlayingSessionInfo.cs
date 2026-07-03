@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using static Playhead.Interop.COMInterop;
 
 namespace Playhead.Sessions
@@ -6,7 +7,12 @@ namespace Playhead.Sessions
     /// <summary>
     /// Represents the information associated with a <see cref="NowPlayingSession"/>.
     /// </summary>
-    public class NowPlayingSessionInfo : IEquatable<NowPlayingSessionInfo>
+    /// <remarks>
+    /// This type wraps a native COM reference. Call <see cref="Dispose"/> (or use a
+    /// <c>using</c> statement/declaration) once the instance is no longer needed so the
+    /// underlying COM reference is released deterministically.
+    /// </remarks>
+    public class NowPlayingSessionInfo : IEquatable<NowPlayingSessionInfo>, IDisposable
     {
         private readonly INowPlayingSessionInfo_19041 info_19041;
         private readonly INowPlayingSessionInfo_10586 info_10586;
@@ -77,6 +83,26 @@ namespace Playhead.Sessions
             }
 
             return val;
+        }
+
+        private bool disposed;
+
+        /// <summary>
+        /// Releases the underlying COM reference. The instance should not be used after calling this method.
+        /// </summary>
+        public void Dispose()
+        {
+            if (disposed)
+            {
+                return;
+            }
+
+            if (GetIUnknownInterface != null && Marshal.IsComObject(GetIUnknownInterface))
+            {
+                Marshal.ReleaseComObject(GetIUnknownInterface);
+            }
+
+            disposed = true;
         }
     }
 }

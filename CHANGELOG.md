@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **`NowPlayingSessionManager`**, **`NowPlayingSession`**, **`NowPlayingSessionInfo`**, and **`MediaPlaybackDataSource`** now implement `IDisposable`, so the underlying COM references and any registered event handlers (`SessionListChanged`, `MediaPlaybackDataChanged`) can be released deterministically instead of waiting for garbage collection.
+
+### Documentation
+- Documented COM apartment/threading considerations for `SessionListChanged` / `MediaPlaybackDataChanged` subscribers, and added disposal guidance to the README and XML doc comments.
+
+### Changed
+- CI: `publish.yml` now explicitly sets `tag_name` on the GitHub Release step.
+
+### Security
+- CI: bumped `actions/upload-artifact` (4→7), `github/codeql-action` (3→4), and `softprops/action-gh-release` (2→3) to their latest major versions.
+
+## [1.0.3] - 2026-07-02
+
+### Added
+- **`Playhead.Sample.QuickStart`**: new minimal sample project demonstrating the quick-start usage shown in the README.
+
+### Changed
+- Repository community files (`CONTRIBUTING.md`, `README.md`, `SECURITY.md`) relocated under `.github/`, alongside `GSMTC-Support-And-Popular-Apps.md`, to match GitHub's community-profile conventions.
+- Cleaned up the sample project files (`Playhead.Sample.CLI`, `Playhead.Sample.CLI.FX462`, `Playhead.Sample.SessionProvider`) and `Playhead.slnx` to reflect the relocated files and new sample project.
+
+## [1.0.2] - 2026-07-02
+
+### Changed
+- Refined the NuGet package `Description` metadata for clarity.
+
 ## [1.0.1] - 2026-07-02
 
 ### Fixed
@@ -33,6 +59,8 @@ Both structs now use explicit, correctly-ordered backing fields on every target 
 - Nullable reference type annotations and modern C# language features.
 - Sample applications: modern .NET CLI, .NET Framework 4.6.2 CLI, a fake session provider, and a UWP media controller UI.
 
-[Unreleased]: https://github.com/Taiizor/Playhead/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/Taiizor/Playhead/compare/v1.0.3...HEAD
+[1.0.3]: https://github.com/Taiizor/Playhead/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/Taiizor/Playhead/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/Taiizor/Playhead/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/Taiizor/Playhead/releases/tag/v1.0.0

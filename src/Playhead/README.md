@@ -40,6 +40,8 @@ Playhead requires **Windows 10 Version 1511 (Build 10586)** or newer.
 <uap7:Capability Name="globalMediaControl" />
 ```
 
+*Note on threading*: `SessionListChanged` and `MediaPlaybackDataChanged` are delivered through COM callbacks from an out-of-process Windows service. If you create `NowPlayingSessionManager` on a Single-Threaded Apartment (STA) thread (e.g. a WinForms/WPF UI thread), that thread must keep pumping its message loop (`Application.Run`, etc.) for events to arrive. Plain console apps/background threads that don't opt into `[STAThread]` run as a Multi-Threaded Apartment (MTA) by default and don't need a message loop.
+
 ## Supported Applications
 Playhead can interact with any application that integrates with the Windows SMTC APIs. For a comprehensive list of supported apps and browsers, check our [Supported Apps Documentation](https://github.com/Taiizor/Playhead/blob/develop/GSMTC-Support-And-Popular-Apps.md).
 
@@ -96,6 +98,25 @@ manager.SessionListChanged += (sender, args) =>
     }
 };
 ```
+
+### Disposal
+
+`NowPlayingSessionManager`, `NowPlayingSession`, `NowPlayingSessionInfo`, and `MediaPlaybackDataSource` wrap native COM resources and implement `IDisposable`. Dispose of them once you're done so the underlying COM references and event registrations are released deterministically instead of waiting for garbage collection:
+
+```csharp
+using NowPlayingSessionManager manager = new();
+
+NowPlayingSession session = manager.CurrentSession;
+
+if (session != null)
+{
+    using MediaPlaybackDataSource src = session.ActivateMediaPlaybackDataSource();
+    MediaObjectInfo mediaInfo = src.GetMediaObjectInfo();
+    Console.WriteLine($"Currently Playing: {mediaInfo.Title} by {mediaInfo.Artist}");
+}
+```
+
+If you're subscribing to `SessionListChanged` / `MediaPlaybackDataChanged` for the lifetime of your application, keep the manager (and any activated data sources) alive for as long as you need those events, and dispose of them during shutdown instead.
 
 See the [samples](https://github.com/Taiizor/Playhead/tree/develop/samples) folder for complete, runnable console, .NET Framework, and UWP examples.
 

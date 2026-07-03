@@ -60,6 +60,8 @@ namespace Playhead.Sample.CLI.FX462
                     src.SendMediaPlaybackCommand(MediaPlaybackCommands.FastForward);
                 }
             } while (letter != 'q');
+
+            manager.Dispose();
         }
 
         private static void SessionListChanged(object sender, NowPlayingSessionManagerEventArgs e)

@@ -8,7 +8,23 @@ namespace Playhead.Managers
     /// Provides access to playback sessions throughout the system that have integrated
     /// with SystemMediaTransportControls to provide playback info and allow remote control.
     /// </summary>
-    public class NowPlayingSessionManager
+    /// <remarks>
+    /// <para>
+    /// This type wraps a native COM reference and registers COM event callbacks. Call
+    /// <see cref="Dispose"/> (or use a <c>using</c> statement/declaration) once the manager
+    /// is no longer needed so the underlying COM reference and any registered
+    /// <see cref="SessionListChanged"/> handler are released deterministically.
+    /// </para>
+    /// <para>
+    /// <see cref="SessionListChanged"/> is delivered through a COM callback from an
+    /// out-of-process service. If this instance is created on a Single-Threaded Apartment
+    /// (STA) thread (for example a WinForms/WPF UI thread), that thread must keep pumping
+    /// its message loop (e.g. <c>Application.Run</c>) for events to be delivered. Plain
+    /// console apps/background threads that do not opt into <c>[STAThread]</c> run as a
+    /// Multi-Threaded Apartment (MTA) by default and do not require a message loop.
+    /// </para>
+    /// </remarks>
+    public class NowPlayingSessionManager : IDisposable
     {
         private readonly object sessionManagerIUnknown;
 
@@ -330,6 +346,57 @@ namespace Playhead.Managers
                 CurrentSessionInstance._sessionListChanged?.Invoke(CurrentSessionInstance,
                     new NowPlayingSessionManagerEventArgs { NotificationType = notificationType, NowPlayingSessionInfo = new NowPlayingSessionInfo(pINowPlayingSessionInfoIUnknown), SessionTypeString = unknown });
             }
+        }
+
+        #endregion
+
+        #region IDisposable
+
+        private bool disposed;
+
+        /// <summary>
+        /// Unregisters any active <see cref="SessionListChanged"/> event handler and releases
+        /// the underlying COM reference. The instance should not be used after calling this method.
+        /// </summary>
+        public void Dispose()
+        {
+            if (disposed)
+            {
+                return;
+            }
+
+            lock (subscriptionLock)
+            {
+                if (eventHandler != null)
+                {
+                    try
+                    {
+                        if (numSelectInterface == 19041)
+                        {
+                            sessionManager_19041.UnregisterEventHandler(eventHandler.Token);
+                        }
+                        else
+                        {
+                            sessionManager_10586.UnregisterEventHandler(eventHandler.Token);
+                        }
+                    }
+                    catch (COMException)
+                    {
+                        // The native session manager may already be gone; ignore during cleanup.
+                    }
+
+                    eventHandler = null;
+                }
+
+                _sessionListChanged = null;
+            }
+
+            if (sessionManagerIUnknown != null && Marshal.IsComObject(sessionManagerIUnknown))
+            {
+                Marshal.ReleaseComObject(sessionManagerIUnknown);
+            }
+
+            disposed = true;
         }
 
         #endregion
