@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] - 2026-07-04
+
 ### Added
 - **`NowPlayingSessionManager`**, **`NowPlayingSession`**, **`NowPlayingSessionInfo`**, and **`MediaPlaybackDataSource`** now implement `IDisposable`, so the underlying COM references and any registered event handlers (`SessionListChanged`, `MediaPlaybackDataChanged`) can be released deterministically instead of waiting for garbage collection.
 
@@ -59,7 +61,8 @@ Both structs now use explicit, correctly-ordered backing fields on every target 
 - Nullable reference type annotations and modern C# language features.
 - Sample applications: modern .NET CLI, .NET Framework 4.6.2 CLI, a fake session provider, and a UWP media controller UI.
 
-[Unreleased]: https://github.com/Taiizor/Playhead/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/Taiizor/Playhead/compare/v1.0.4...HEAD
+[1.0.4]: https://github.com/Taiizor/Playhead/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/Taiizor/Playhead/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/Taiizor/Playhead/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/Taiizor/Playhead/compare/v1.0.0...v1.0.1
