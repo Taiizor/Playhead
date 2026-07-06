@@ -43,7 +43,7 @@ Playhead requires **Windows 10 Version 1511 (Build 10586)** or newer.
 *Note on threading*: `SessionListChanged` and `MediaPlaybackDataChanged` are delivered through COM callbacks from an out-of-process Windows service. If you create `NowPlayingSessionManager` on a Single-Threaded Apartment (STA) thread (e.g. a WinForms/WPF UI thread), that thread must keep pumping its message loop (`Application.Run`, etc.) for events to arrive. Plain console apps/background threads that don't opt into `[STAThread]` run as a Multi-Threaded Apartment (MTA) by default and don't need a message loop.
 
 ## Supported Applications
-Playhead can interact with any application that integrates with the Windows SMTC APIs. For a comprehensive list of supported apps and browsers, check our [Supported Apps Documentation](https://github.com/Taiizor/Playhead/blob/develop/GSMTC-Support-And-Popular-Apps.md).
+Playhead can interact with any application that integrates with the Windows SMTC APIs. For a comprehensive list of supported apps and browsers, check our [Supported Apps Documentation](https://github.com/Taiizor/Playhead/blob/develop/.github/GSMTC-Support-And-Popular-Apps.md).
 
 ## Installation
 You can install Playhead via the NuGet Package Manager:
